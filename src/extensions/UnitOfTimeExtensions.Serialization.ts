@@ -19,23 +19,23 @@ declare module '../UnitOfTime' {
 }
 
 class SerializationFormat {
-  public typeName: string
+  public unitOfTime: UnitOfTime
 
   public regex: RegExp
 
-  constructor(typeName: string, regex: RegExp) {
-    this.typeName = typeName
+  constructor(unitOfTime: UnitOfTime, regex: RegExp) {
+    this.unitOfTime = unitOfTime
     this.regex = regex
   }
 }
 
 const SerializationFormatByType: Array<SerializationFormat> = [
-  new SerializationFormat(CalendarMonth.name, new RegExp('^c-(\\d{4})-(\\d{2})$')),
-  new SerializationFormat(CalendarQuarter.name, new RegExp('^c-(\\d{4})-Q(\\d)$')),
-  new SerializationFormat(CalendarYear.name, new RegExp('^c-(\\d{4})$')),
-  new SerializationFormat(FiscalMonth.name, new RegExp('^f-(\\d{4})-(\\d{2})$')),
-  new SerializationFormat(FiscalQuarter.name, new RegExp('^f-(\\d{4})-Q(\\d)$')),
-  new SerializationFormat(FiscalYear.name, new RegExp('^f-(\\d{4})$')),
+  new SerializationFormat(new CalendarMonth(1, MonthNumber.One), new RegExp('^c-(\\d{4})-(\\d{2})$')),
+  new SerializationFormat(new CalendarQuarter(1, QuarterNumber.Q1), new RegExp('^c-(\\d{4})-Q(\\d)$')),
+  new SerializationFormat(new CalendarYear(1), new RegExp('^c-(\\d{4})$')),
+  new SerializationFormat(new FiscalMonth(1, MonthNumber.One), new RegExp('^f-(\\d{4})-(\\d{2})$')),
+  new SerializationFormat(new FiscalQuarter(1, QuarterNumber.Q1), new RegExp('^f-(\\d{4})-Q(\\d)$')),
+  new SerializationFormat(new FiscalYear(1), new RegExp('^f-(\\d{4})$')),
 ]
 
 function parseIntOrThrow(token: string, errorMessage: string) {
@@ -76,12 +76,14 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     )
   }
   const serializationFormatMatch = serializationFormatMatches[0]
-  const serializedTypeName = serializationFormatMatch.serializationFormat.typeName
+  const serializedType = serializationFormatMatch.serializationFormat.unitOfTime
 
-  const errorMessage = `Cannot deserialize string;  it appears to be a ${serializedTypeName} but it is malformed.`
+  const errorMessage = `Cannot deserialize string;  it appears to be a ${JSON.stringify(
+    serializedType,
+  )} but it is malformed.`
   const tokens = serializationFormatMatch.serializationFormat.regex.exec(unitOfTime)!
 
-  if (serializedTypeName === CalendarMonth.name) {
+  if (serializedType instanceof CalendarMonth) {
     const year = parseIntOrThrow(tokens[1], errorMessage)
     const monthNumber = parseEnumOrThrow<MonthNumber>(tokens[2], errorMessage)
 
@@ -93,7 +95,7 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     }
   }
 
-  if (serializedTypeName === CalendarQuarter.name) {
+  if (serializedType instanceof CalendarQuarter) {
     const year = parseIntOrThrow(tokens[1], errorMessage)
     const quarterNumber = parseEnumOrThrow<QuarterNumber>(tokens[2], errorMessage)
 
@@ -105,7 +107,7 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     }
   }
 
-  if (serializedTypeName === CalendarYear.name) {
+  if (serializedType instanceof CalendarYear) {
     const year = parseIntOrThrow(tokens[1], errorMessage)
 
     try {
@@ -116,7 +118,7 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     }
   }
 
-  if (serializedTypeName === FiscalMonth.name) {
+  if (serializedType instanceof FiscalMonth) {
     const year = parseIntOrThrow(tokens[1], errorMessage)
     const monthNumber = parseEnumOrThrow<MonthNumber>(tokens[2], errorMessage)
 
@@ -128,7 +130,7 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     }
   }
 
-  if (serializedTypeName === FiscalQuarter.name) {
+  if (serializedType instanceof FiscalQuarter) {
     const year = parseIntOrThrow(tokens[1], errorMessage)
     const quarterNumber = parseEnumOrThrow<QuarterNumber>(tokens[2], errorMessage)
 
@@ -140,7 +142,7 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     }
   }
 
-  if (serializedTypeName === FiscalYear.name) {
+  if (serializedType instanceof FiscalYear) {
     const year = parseIntOrThrow(tokens[1], errorMessage)
 
     try {
@@ -151,7 +153,7 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     }
   }
 
-  throw new RangeError(`this type of unit-of-time is not supported: ${serializedTypeName}`)
+  throw new RangeError(`this type of unit-of-time is not supported: ${serializedType}`)
 }
 
 // tslint:disable-next-line: only-arrow-functions
