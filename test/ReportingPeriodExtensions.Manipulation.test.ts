@@ -412,7 +412,7 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
       // Assert
       expect(createPermutations).toThrow(/ must be greater than 0/)
     })
-    it('should return permuations when call for reportingPeriod of CalendarMonth', () => {
+    it('should return permutations when call for reportingPeriod of CalendarMonth', () => {
       // Arrange
       const reportingPeriod1 = new ReportingPeriod(
         new CalendarMonth(2016, MonthOfYear.February),
