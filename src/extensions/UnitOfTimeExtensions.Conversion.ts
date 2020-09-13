@@ -28,21 +28,18 @@
 // }
 
 // declare module '../IHaveAMonth' {
-//   // tslint:disable-next-line: interface-name
 //   interface IHaveAMonth {
 //     ToGenericMonth(month: IHaveAMonth): GenericMonth
 //   }
 // }
 
 // declare module '../IHaveAQuarter' {
-//   // tslint:disable-next-line: interface-name
 //   interface IHaveAQuarter {
 //     ToGenericQuarter(month: IHaveAQuarter): GenericQuarter
 //   }
 // }
 
 // declare module '../IHaveAYear' {
-//   // tslint:disable-next-line: interface-name
 //   interface IHaveAYear {
 //     ToGenericYear(month: IHaveAYear): GenericYear
 //   }
