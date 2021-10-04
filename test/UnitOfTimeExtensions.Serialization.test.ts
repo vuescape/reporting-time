@@ -1,8 +1,10 @@
 import expect from 'expect'
 
+import { CalendarDay } from '../src/CalendarDay'
 import { CalendarMonth } from '../src/CalendarMonth'
 import { CalendarQuarter } from '../src/CalendarQuarter'
 import { CalendarYear } from '../src/CalendarYear'
+import { DayOfMonth } from '../src/DayOfMonth'
 import { FiscalMonth } from '../src/FiscalMonth'
 import { FiscalQuarter } from '../src/FiscalQuarter'
 import { FiscalUnitOfTime } from '../src/FiscalUnitOfTime'
@@ -16,6 +18,19 @@ import '../src/extensions/UnitOfTimeExtensions.Serialization'
 
 describe('UnitOfTimeExtensions.Serialization --', () => {
   describe('round trip UnitOfTime --', () => {
+    it('should be serialized/deserialized correctly when UnitOfTime is a CalendarDay', () => {
+      // Arrange
+      const calendarDay = new CalendarDay(2020, MonthNumber.Nine, DayOfMonth.Sixteen)
+
+      // Act
+      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarDay>(
+        calendarDay.serializeToSortableString(),
+      )
+
+      // Assert
+      expect(unitOfTime).toBeTruthy()
+      expect(unitOfTime.equals(calendarDay)).toBe(true)
+    })
     it('should be serialized/deserialized correctly when UnitOfTime is a CalendarMonth', () => {
       // Arrange
       const calendarMonth = new CalendarMonth(2020, MonthNumber.Nine)
@@ -92,6 +107,22 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
   })
   describe('deserializeFromSortableString --', () => {
+    it('should be deserialized correctly when deserializing a CalendarMonth', () => {
+      // Arrange
+      const year = 2020
+      const monthNumber = MonthNumber.Nine
+      const dayOfMonth = DayOfMonth.Twelve
+      const unitOfTimeString = `c-${year}-0${monthNumber}-${dayOfMonth}`
+
+      // Act
+      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarDay>(unitOfTimeString)
+
+      // Assert
+      expect(unitOfTime).toBeTruthy()
+      expect(unitOfTime.year).toBe(year)
+      expect(unitOfTime.monthNumber).toBe(monthNumber)
+      expect(unitOfTime.dayOfMonth).toBe(dayOfMonth)
+    })
     it('should be deserialized correctly when deserializing a CalendarMonth', () => {
       // Arrange
       const year = 2020
@@ -174,6 +205,19 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
   })
   describe('serializeToSortableString --', () => {
+    it('should be serialized correctly when serializing a CalendarDay', () => {
+      // Arrange
+      const year = 2020
+      const monthNumber = MonthNumber.Five
+      const dayOfMonth = DayOfMonth.TwentyThree
+      const unitOfTime = new CalendarDay(year, monthNumber, dayOfMonth)
+
+      // Act
+      const serializedString = unitOfTime.serializeToSortableString()
+
+      // Assert
+      expect(serializedString).toBe(`c-${year}-0${monthNumber}-${dayOfMonth}`)
+    })
     it('should be serialized correctly when serializing a CalendarMonth', () => {
       // Arrange
       const year = 2020

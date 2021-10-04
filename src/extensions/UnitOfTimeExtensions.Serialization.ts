@@ -1,6 +1,8 @@
+import { CalendarDay } from '../CalendarDay'
 import { CalendarMonth } from '../CalendarMonth'
 import { CalendarQuarter } from '../CalendarQuarter'
 import { CalendarYear } from '../CalendarYear'
+import { DayOfMonth } from '../DayOfMonth'
 import { FiscalMonth } from '../FiscalMonth'
 import { FiscalQuarter } from '../FiscalQuarter'
 import { FiscalYear } from '../FiscalYear'
@@ -30,6 +32,10 @@ class SerializationFormat {
 }
 
 const SerializationFormatByType: Array<SerializationFormat> = [
+  new SerializationFormat(
+    new CalendarDay(1, MonthNumber.One, DayOfMonth.One),
+    new RegExp('^c-(\\d{4})-(\\d{2})-(\\d{2})$'),
+  ),
   new SerializationFormat(new CalendarMonth(1, MonthNumber.One), new RegExp('^c-(\\d{4})-(\\d{2})$')),
   new SerializationFormat(new CalendarQuarter(1, QuarterNumber.Q1), new RegExp('^c-(\\d{4})-Q(\\d)$')),
   new SerializationFormat(new CalendarYear(1), new RegExp('^c-(\\d{4})$')),
@@ -82,6 +88,18 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     serializedType,
   )} but it is malformed.`
   const tokens = serializationFormatMatch.serializationFormat.regex.exec(unitOfTime)!
+
+  if (serializedType instanceof CalendarDay) {
+    const year = parseIntOrThrow(tokens[1], errorMessage)
+    const monthNumber = parseEnumOrThrow<MonthNumber>(tokens[2], errorMessage)
+    const dayOfMonth = parseEnumOrThrow<DayOfMonth>(tokens[3], errorMessage)
+    try {
+      const result = new CalendarDay(year, monthNumber, dayOfMonth)
+      return (result as unknown) as T
+    } catch {
+      throw new Error(errorMessage)
+    }
+  }
 
   if (serializedType instanceof CalendarMonth) {
     const year = parseIntOrThrow(tokens[1], errorMessage)
@@ -158,6 +176,17 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
 
 // tslint:disable-next-line: only-arrow-functions
 UnitOfTime.prototype.serializeToSortableString = function() {
+  if (this instanceof CalendarDay) {
+    const unitOfTimeAsCalendarDay = this as CalendarDay
+    const result = `c-${unitOfTimeAsCalendarDay.year
+      .toString()
+      .padStart(4, '0')}-${unitOfTimeAsCalendarDay.monthNumber
+      .toString()
+      .padStart(2, '0')}-${unitOfTimeAsCalendarDay.dayOfMonth.toString().padStart(2, '0')}`
+
+    return result
+  }
+
   if (this instanceof CalendarMonth) {
     const unitOfTimeAsCalendarMonth = this as CalendarMonth
     const result = `c-${unitOfTimeAsCalendarMonth.year

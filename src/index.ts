@@ -1,3 +1,4 @@
+export * from './CalendarDay'
 export * from './CalendarMonth'
 export * from './CalendarQuarter'
 export * from './CalendarUnitOfTime'
@@ -22,6 +23,7 @@ export * from './UnitOfTimeKind'
 export * from './extensions/QuarterNumberExtensions'
 export * from './extensions/UnitOfTimeGranularityExtensions'
 
+import './extensions/CalendarUnitOfTimeExtensions'
 import './extensions/ReportingPeriodExtensions.Properties'
 import './extensions/ReportingPeriodExtensions.Serialization'
 import './extensions/UnitOfTimeExtensions.Conversion'

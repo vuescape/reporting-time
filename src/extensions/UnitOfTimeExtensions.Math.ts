@@ -1,3 +1,4 @@
+import { CalendarDay } from '../CalendarDay'
 import { CalendarMonth } from '../CalendarMonth'
 import { CalendarQuarter } from '../CalendarQuarter'
 import { CalendarYear } from '../CalendarYear'
@@ -21,10 +22,7 @@ declare module '../UnitOfTime' {
 import './UnitOfTimeExtensions.Serialization'
 
 // tslint:disable-next-line: only-arrow-functions
-UnitOfTime.prototype.plus = function(
-  unitsToAdd: number,
-  granularityOfUnitsToAdd: UnitOfTimeGranularity,
-) {
+UnitOfTime.prototype.plus = function(unitsToAdd: number, granularityOfUnitsToAdd: UnitOfTimeGranularity) {
   if (granularityOfUnitsToAdd === undefined) {
     return plusInternal(this, unitsToAdd)
   }
@@ -125,6 +123,18 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
 
   if (unitOfTime instanceof GenericYear) {
     const result = new GenericYear(unitOfTime.year + unitsToAdd)
+    return (result as unknown) as T
+  }
+
+  if (unitOfTime instanceof CalendarDay) {
+    const calendarDayAsDate = new Date(unitOfTime.year, unitOfTime.monthNumber - 1, unitOfTime.dayOfMonth)
+    calendarDayAsDate.setDate(calendarDayAsDate.getDate() + unitsToAdd)
+    const result = new CalendarDay(
+      calendarDayAsDate.getFullYear(),
+      calendarDayAsDate.getMonth() + 1,
+      calendarDayAsDate.getDate(),
+    )
+
     return (result as unknown) as T
   }
 

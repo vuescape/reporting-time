@@ -1,5 +1,6 @@
 import { CalendarMonth } from '../CalendarMonth'
 import { CalendarQuarter } from '../CalendarQuarter'
+import { CalendarUnitOfTime } from '../CalendarUnitOfTime'
 import { CalendarYear } from '../CalendarYear'
 import { FiscalMonth } from '../FiscalMonth'
 import { FiscalQuarter } from '../FiscalQuarter'
@@ -261,12 +262,12 @@ const makeMoreGranularUnitOfTime = (unitOfTime: UnitOfTime, granularity: UnitOfT
     }
   } else if (unitOfTime.unitOfTimeGranularity === UnitOfTimeGranularity.Month) {
     if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Calendar) {
-      throw new RangeError('CalendarDay is not currently supported')
-      // const calendarUnitOfTime = unitOfTime as CalendarUnitOfTime
-      // moreGranularReportingPeriod = new ReportingPeriod(
-      //   calendarUnitOfTime.GetFirstCalendarDay(),
-      //   calendarUnitOfTime.GetLastCalendarDay(),
-      // )
+      const calendarUnitOfTime = unitOfTime as CalendarUnitOfTime
+      moreGranularReportingPeriod = new ReportingPeriod(
+        calendarUnitOfTime.getFirstCalendarDay(),
+        calendarUnitOfTime.getLastCalendarDay(),
+
+      )
     } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Fiscal) {
       throw new Error('The Fiscal kind cannot be made more granular than Month.')
     } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Generic) {

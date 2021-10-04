@@ -1,8 +1,10 @@
 import expect from 'expect'
 
+import { CalendarDay } from '../src/CalendarDay'
 import { CalendarMonth } from '../src/CalendarMonth'
 import { CalendarQuarter } from '../src/CalendarQuarter'
 import { CalendarYear } from '../src/CalendarYear'
+import { DayOfMonth } from '../src/DayOfMonth'
 import { FiscalMonth } from '../src/FiscalMonth'
 import { FiscalQuarter } from '../src/FiscalQuarter'
 import { FiscalUnitOfTime } from '../src/FiscalUnitOfTime'
@@ -65,6 +67,58 @@ describe('UnitOfTimeExtensions.Math --', () => {
 
       // Assert
       expect(newCalendarMonth1.equals(newCalendarMonth2)).toBe(true)
+    })
+    it('should return same CalendarDay when unitOfTime is a CalendarDay and parameter unitsToAdd is 0', () => {
+      // Arrange
+      const expectedUnitOfTime = new CalendarDay(2020, MonthNumber.Nine, DayOfMonth.TwentyThree)
+
+      // Act
+      const actualUnitOfTime = expectedUnitOfTime.plus(0)
+
+      // Assert
+      expect(actualUnitOfTime.equals(expectedUnitOfTime)).toBe(true)
+    })
+    it('should add CalendarDays when unitOfTime is a CalendarDay and parameter unitsToAdd is positive', () => {
+      // Arrange
+      const systemUnderTest = new CalendarDay(2016, MonthOfYear.December, DayOfMonth.Twenty)
+
+      const expectedUnitOfTime1 = new CalendarDay(2016, MonthOfYear.December, DayOfMonth.TwentyOne)
+      const expectedUnitOfTime2 = new CalendarDay(2016, MonthOfYear.December, DayOfMonth.TwentyTwo)
+      const expectedUnitOfTime3 = new CalendarDay(2016, MonthOfYear.December, DayOfMonth.TwentySix)
+      const expectedUnitOfTime4 = new CalendarDay(2017, MonthOfYear.January, DayOfMonth.Four)
+
+      // Act
+      const actualUnitOfTime1 = systemUnderTest.plus(1)
+      const actualUnitOfTime2 = systemUnderTest.plus(2)
+      const actualUnitOfTime3 = systemUnderTest.plus(6)
+      const actualUnitOfTime4 = systemUnderTest.plus(15)
+      
+      // Assert
+      expect(actualUnitOfTime1.equals(expectedUnitOfTime1)).toBe(true)
+      expect(actualUnitOfTime2.equals(expectedUnitOfTime2)).toBe(true)
+      expect(actualUnitOfTime3.equals(expectedUnitOfTime3)).toBe(true)
+      expect(actualUnitOfTime4.equals(expectedUnitOfTime4)).toBe(true)
+    })
+    it('should subtract CalendarDays when unitOfTime is a CalendarDay and parameter unitsToAdd is negative', () => {
+      // Arrange
+      const systemUnderTest = new CalendarDay(2016, MonthOfYear.November, DayOfMonth.Ten)
+
+      const expectedUnitOfTime1 = new CalendarDay(2016, MonthOfYear.November, DayOfMonth.Nine)
+      const expectedUnitOfTime2 = new CalendarDay(2016, MonthOfYear.November, DayOfMonth.Eight)
+      const expectedUnitOfTime3 = new CalendarDay(2016, MonthOfYear.October, DayOfMonth.Thirty)
+      const expectedUnitOfTime4 = new CalendarDay(2016, MonthOfYear.October, DayOfMonth.TwentySix)
+
+      // Act
+      const actualUnitOfTime1 = systemUnderTest.plus(-1)
+      const actualUnitOfTime2 = systemUnderTest.plus(-2)
+      const actualUnitOfTime3 = systemUnderTest.plus(-11)
+      const actualUnitOfTime4 = systemUnderTest.plus(-15)
+
+      // Assert
+      expect(actualUnitOfTime1.equals(expectedUnitOfTime1)).toBe(true)
+      expect(actualUnitOfTime2.equals(expectedUnitOfTime2)).toBe(true)
+      expect(actualUnitOfTime3.equals(expectedUnitOfTime3)).toBe(true)
+      expect(actualUnitOfTime4.equals(expectedUnitOfTime4)).toBe(true)
     })
     it('should return same CalendarMonth when unitOfTime is a CalendarMonth and parameter unitsToAdd is 0', () => {
       // Arrange
