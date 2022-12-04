@@ -14,6 +14,7 @@ declare module '../CalendarUnitOfTime' {
      * The first calendar day.
      */
     getFirstCalendarDay(): CalendarDay
+
     /**
      * Gets the last  @see CalendarDay of a @see CalendarUnitOfTime.
      * @returns
@@ -29,6 +30,7 @@ declare module '../CalendarUnitOfTime' {
      * The first calendar day.
      */
     export function getFirstCalendarDay(): CalendarDay
+
     /**
      * Gets the last  @see CalendarDay of a @see CalendarUnitOfTime.
      * @returns

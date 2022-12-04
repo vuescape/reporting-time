@@ -166,9 +166,11 @@ ReportingPeriod.prototype.split = function(granularity: UnitOfTimeGranularity): 
   let result: Array<UnitOfTime> = []
   if (reportingPeriodGranularity === granularity) {
     result = this.getUnitsWithin()
-  } else if (UnitOfTimeGranularityExtensions.isLessGranularThan(reportingPeriodGranularity, granularity)) {
+  }
+  else if (UnitOfTimeGranularityExtensions.isLessGranularThan(reportingPeriodGranularity, granularity)) {
     result = makeMoreGranular(this, granularity).getUnitsWithin()
-  } else {
+  }
+  else {
     result = makeLessGranular(this, granularity).getUnitsWithin()
   }
 
@@ -223,20 +225,24 @@ const makeMoreGranularUnitOfTime = (unitOfTime: UnitOfTime, granularity: UnitOfT
         new CalendarQuarter(unitOfTimeAsYear.year, startQuarter),
         new CalendarQuarter(unitOfTimeAsYear.year, endQuarter),
       )
-    } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Fiscal) {
+    }
+    else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Fiscal) {
       moreGranularReportingPeriod = new ReportingPeriod(
         new FiscalQuarter(unitOfTimeAsYear.year, startQuarter),
         new FiscalQuarter(unitOfTimeAsYear.year, endQuarter),
       )
-    } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Generic) {
+    }
+    else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Generic) {
       moreGranularReportingPeriod = new ReportingPeriod(
         new GenericQuarter(unitOfTimeAsYear.year, startQuarter),
         new GenericQuarter(unitOfTimeAsYear.year, endQuarter),
       )
-    } else {
+    }
+    else {
       throw new RangeError('This kind of unit-of-time is not supported: ' + unitOfTime.unitOfTimeKind)
     }
-  } else if (unitOfTime.unitOfTimeGranularity === UnitOfTimeGranularity.Quarter) {
+  }
+  else if (unitOfTime.unitOfTimeGranularity === UnitOfTimeGranularity.Quarter) {
     const unitOfTimeAsQuarter = (unitOfTime as unknown) as IHaveAQuarter
 
     const startMonth = (unitOfTimeAsQuarter.quarterNumber - 1) * 3 + 1
@@ -247,35 +253,42 @@ const makeMoreGranularUnitOfTime = (unitOfTime: UnitOfTime, granularity: UnitOfT
         new CalendarMonth(unitOfTimeAsQuarter.year, startMonth),
         new CalendarMonth(unitOfTimeAsQuarter.year, endMonth),
       )
-    } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Fiscal) {
+    }
+    else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Fiscal) {
       moreGranularReportingPeriod = new ReportingPeriod(
         new FiscalMonth(unitOfTimeAsQuarter.year, startMonth),
         new FiscalMonth(unitOfTimeAsQuarter.year, endMonth),
       )
-    } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Generic) {
+    }
+    else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Generic) {
       moreGranularReportingPeriod = new ReportingPeriod(
         new GenericMonth(unitOfTimeAsQuarter.year, startMonth),
         new GenericMonth(unitOfTimeAsQuarter.year, endMonth),
       )
-    } else {
+    }
+    else {
       throw new RangeError('This kind of unit-of-time is not supported: ' + unitOfTime.unitOfTimeKind)
     }
-  } else if (unitOfTime.unitOfTimeGranularity === UnitOfTimeGranularity.Month) {
+  }
+  else if (unitOfTime.unitOfTimeGranularity === UnitOfTimeGranularity.Month) {
     if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Calendar) {
       const calendarUnitOfTime = unitOfTime as CalendarUnitOfTime
       moreGranularReportingPeriod = new ReportingPeriod(
         calendarUnitOfTime.getFirstCalendarDay(),
         calendarUnitOfTime.getLastCalendarDay(),
-
       )
-    } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Fiscal) {
+    }
+    else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Fiscal) {
       throw new Error('The Fiscal kind cannot be made more granular than Month.')
-    } else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Generic) {
+    }
+    else if (unitOfTime.unitOfTimeKind === UnitOfTimeKind.Generic) {
       throw new Error('The Generic kind cannot be made more granular than Month.')
-    } else {
+    }
+    else {
       throw new RangeError('This kind of unit-of-time is not supported: ' + unitOfTime.unitOfTimeKind)
     }
-  } else {
+  }
+  else {
     throw new RangeError('This granularity is not supported: ' + unitOfTime.unitOfTimeGranularity)
   }
 
@@ -309,7 +322,8 @@ const makeLessGranular = (reportingPeriod: ReportingPeriod, granularity: UnitOfT
   const unitOfTimeKind = reportingPeriod.getUnitOfTimeKind()
   if (reportingPeriodGranularity === UnitOfTimeGranularity.Day) {
     throw new Error('Not implemented')
-  } else if (reportingPeriodGranularity === UnitOfTimeGranularity.Month) {
+  }
+  else if (reportingPeriodGranularity === UnitOfTimeGranularity.Month) {
     const startAsMonth = (reportingPeriod.start as unknown) as IHaveAMonth
     const endAsMonth = (reportingPeriod.end as unknown) as IHaveAMonth
 
@@ -345,18 +359,22 @@ const makeLessGranular = (reportingPeriod: ReportingPeriod, granularity: UnitOfT
       const startQuarter = new CalendarQuarter(startAsMonth.year, quarterByStartMonth.get(startAsMonth.monthNumber)!)
       const endQuarter = new CalendarQuarter(endAsMonth.year, quarterByEndMonth.get(endAsMonth.monthNumber)!)
       lessGranularReportingPeriod = new ReportingPeriod(startQuarter, endQuarter)
-    } else if (unitOfTimeKind === UnitOfTimeKind.Fiscal) {
+    }
+    else if (unitOfTimeKind === UnitOfTimeKind.Fiscal) {
       const startQuarter = new FiscalQuarter(startAsMonth.year, quarterByStartMonth.get(startAsMonth.monthNumber)!)
       const endQuarter = new FiscalQuarter(endAsMonth.year, quarterByEndMonth.get(endAsMonth.monthNumber)!)
       lessGranularReportingPeriod = new ReportingPeriod(startQuarter, endQuarter)
-    } else if (unitOfTimeKind === UnitOfTimeKind.Generic) {
+    }
+    else if (unitOfTimeKind === UnitOfTimeKind.Generic) {
       const startQuarter = new GenericQuarter(startAsMonth.year, quarterByStartMonth.get(startAsMonth.monthNumber)!)
       const endQuarter = new GenericQuarter(endAsMonth.year, quarterByEndMonth.get(endAsMonth.monthNumber)!)
       lessGranularReportingPeriod = new ReportingPeriod(startQuarter, endQuarter)
-    } else {
+    }
+    else {
       throw new RangeError('This kind of unit-of-time is not supported: ' + unitOfTimeKind)
     }
-  } else if (reportingPeriodGranularity === UnitOfTimeGranularity.Quarter) {
+  }
+  else if (reportingPeriodGranularity === UnitOfTimeGranularity.Quarter) {
     const startAsQuarter = (reportingPeriod.start as unknown) as IHaveAQuarter
     const endAsQuarter = (reportingPeriod.end as unknown) as IHaveAQuarter
 
@@ -378,18 +396,22 @@ const makeLessGranular = (reportingPeriod: ReportingPeriod, granularity: UnitOfT
       const startYear = new CalendarYear(startAsQuarter.year)
       const endYear = new CalendarYear(endAsQuarter.year)
       lessGranularReportingPeriod = new ReportingPeriod(startYear, endYear)
-    } else if (unitOfTimeKind === UnitOfTimeKind.Fiscal) {
+    }
+    else if (unitOfTimeKind === UnitOfTimeKind.Fiscal) {
       const startYear = new FiscalYear(startAsQuarter.year)
       const endYear = new FiscalYear(endAsQuarter.year)
       lessGranularReportingPeriod = new ReportingPeriod(startYear, endYear)
-    } else if (unitOfTimeKind === UnitOfTimeKind.Generic) {
+    }
+    else if (unitOfTimeKind === UnitOfTimeKind.Generic) {
       const startYear = new GenericYear(startAsQuarter.year)
       const endYear = new GenericYear(endAsQuarter.year)
       lessGranularReportingPeriod = new ReportingPeriod(startYear, endYear)
-    } else {
+    }
+    else {
       throw new RangeError('This kind of unit-of-time is not supported: ' + unitOfTimeKind)
     }
-  } else {
+  }
+  else {
     throw new RangeError('This granularity is not supported: ' + reportingPeriodGranularity)
   }
 

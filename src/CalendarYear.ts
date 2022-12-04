@@ -5,6 +5,7 @@ import { UnitOfTimeGranularity } from './UnitOfTimeGranularity'
 /** Represents a calendar year. */
 export class CalendarYear extends CalendarUnitOfTime implements IHaveAYear {
   private yearValue: number
+
   public get year(): number {
     return this.yearValue
   }

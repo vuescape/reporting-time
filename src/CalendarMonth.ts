@@ -31,7 +31,7 @@ export class CalendarMonth extends CalendarUnitOfTime implements IHaveAMonth {
     if (!Object.values(MonthNumber).includes(monthNumberValue)) {
       throw new RangeError(`monthNumber, ${monthNumberValue}, must be a valid MonthNumber.`)
     }
-    
+
     if (monthNumberValue === MonthNumber.Invalid) {
       throw new RangeError(`monthNumber, ${monthNumberValue}, must not be Invalid.`)
     }

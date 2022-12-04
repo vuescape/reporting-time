@@ -47,7 +47,8 @@ const SerializationFormatByType: Array<SerializationFormat> = [
 function parseIntOrThrow(token: string, errorMessage: string) {
   if (/^[-+]?(\d+|Infinity)$/.test(token)) {
     return Number(token)
-  } else {
+  }
+  else {
     throw new RangeError(errorMessage)
   }
 }
@@ -96,7 +97,8 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     try {
       const result = new CalendarDay(year, monthNumber, dayOfMonth)
       return (result as unknown) as T
-    } catch {
+    }
+    catch {
       throw new Error(errorMessage)
     }
   }
@@ -108,7 +110,8 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     try {
       const result = new CalendarMonth(year, monthNumber)
       return (result as unknown) as T
-    } catch {
+    }
+    catch {
       throw new Error(errorMessage)
     }
   }
@@ -120,7 +123,8 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     try {
       const result = new CalendarQuarter(year, quarterNumber)
       return (result as unknown) as T
-    } catch {
+    }
+    catch {
       throw new Error(errorMessage)
     }
   }
@@ -131,7 +135,8 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     try {
       const result = new CalendarYear(year)
       return (result as unknown) as T
-    } catch {
+    }
+    catch {
       throw new Error(errorMessage)
     }
   }
@@ -143,7 +148,8 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     try {
       const result = new FiscalMonth(year, monthNumber)
       return (result as unknown) as T
-    } catch {
+    }
+    catch {
       throw new Error(errorMessage)
     }
   }
@@ -155,7 +161,8 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     try {
       const result = new FiscalQuarter(year, quarterNumber)
       return (result as unknown) as T
-    } catch {
+    }
+    catch {
       throw new Error(errorMessage)
     }
   }
@@ -166,7 +173,8 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     try {
       const result = new FiscalYear(year)
       return (result as unknown) as T
-    } catch {
+    }
+    catch {
       throw new Error(errorMessage)
     }
   }

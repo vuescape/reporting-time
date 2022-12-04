@@ -10,6 +10,7 @@ export abstract class UnitOfTime {
    * @returns  true if the two units-of-time are equal; false otherwise.
    */
   public abstract equals(value: UnitOfTime): boolean
+
   //  {
   //   if((left as any).constructor !== (right as any).constructor) {
   //     return false
