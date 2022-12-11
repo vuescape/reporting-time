@@ -30,9 +30,13 @@ declare module '../ReportingPeriod' {
     /**
      * Clones a reporting period while adjusting the start or end of the reporting period, or both.
      * @param component The component(s) of the reporting period to adjust.
-     * @param unitsToAdd The number of units to add when adjusting the reporting period component.  Use negative numbers to subtract units.
-     * @param granularityOfUnitsToAdd The granularity of the units to add to the specified reporting period component(s).  Must be as or less granular than the reporting period component (e.g. can add CalendarYear to a CalendarQuarter, but not vice-versa).
-     * @returns  A clone of the specified reporting period with the specified adjustment made to the start or end of the reporting period, or both.
+     * @param unitsToAdd The number of units to add when adjusting the reporting period component.  Use negative
+     *   numbers to subtract units.
+     * @param granularityOfUnitsToAdd The granularity of the units to add to the specified reporting period
+     *   component(s).  Must be as or less granular than the reporting period component (e.g. can add CalendarYear to a
+     *   CalendarQuarter, but not vice-versa).
+     * @returns  A clone of the specified reporting period with the specified adjustment made to the start or end of
+     *   the reporting period, or both.
      */
     cloneWithAdjustment(
       component: ReportingPeriodComponent,
@@ -46,7 +50,8 @@ declare module '../ReportingPeriod' {
      * to the specified number of maximum number of units that a
      * reporting period can contain.
      * @param maxUnitsInAnyReportingPeriod Maximum number of units-of-time in each reporting period.
-     * @returns  All possible reporting periods containing between 1 and @paramref maxUnitsInAnyReportingPeriod  units-of-time, contained within @paramref reportingPeriod.
+     * @returns  All possible reporting periods containing between 1 and @paramref maxUnitsInAnyReportingPeriod
+     *   units-of-time, contained within @paramref reportingPeriod.
      */
     createPermutations(maxUnitsInAnyReportingPeriod: number): Array<ReportingPeriod>
 

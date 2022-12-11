@@ -42,11 +42,8 @@
 //      * For example, 4Q2017-4Q2017 is NOT adjacent to 1Q2017-2Q2017, because there's a gap of 3Q2017.
 //      * @param reportingPeriod2 The reporting period.
 //      * @returns
-//      * true if the first reporting period is greater than and adjacent to the second reporting period; false, otherwise.
-//      */
-//     isGreaterThanAndAdjacentTo(reportingPeriod: ReportingPeriod): boolean
-//   }
-// }
+//      * true if the first reporting period is greater than and adjacent to the second reporting period; false,
+// otherwise. */ isGreaterThanAndAdjacentTo(reportingPeriod: ReportingPeriod): boolean } }
 
 // // tslint:disable-next-line: only-arrow-functions
 // ReportingPeriod.prototype.contains = function(unitOfTimeOrReportingPeriod: UnitOfTime | ReportingPeriod): boolean {
@@ -109,9 +106,8 @@
 
 //   if (reportingPeriod1.getUnitOfTimeKind() !== reportingPeriod2.getUnitOfTimeKind()) {
 //     throw new Error(
-//       'reportingPeriod1 cannot be compared against reportingPeriod2 because they represent different UnitOfTimeKind.',
-//     )
-//   }
+//       'reportingPeriod1 cannot be compared against reportingPeriod2 because they represent different
+// UnitOfTimeKind.', ) }
 
 //   const result =
 //     reportingPeriod1.contains(reportingPeriod2.start) ||
@@ -133,9 +129,8 @@
 
 //   if (reportingPeriod1.getUnitOfTimeKind() !== reportingPeriod2.getUnitOfTimeKind()) {
 //     throw new Error(
-//       'reportingPeriod1 cannot be compared against reportingPeriod2 because they represent different UnitOfTimeKind.',
-//     )
-//   }
+//       'reportingPeriod1 cannot be compared against reportingPeriod2 because they represent different
+// UnitOfTimeKind.', ) }
 
 //   const mostGranularReportingPeriod1 = reportingPeriod1.toMostGranular()
 //   const mostGranularReportingPeriod2 = reportingPeriod2.toMostGranular()
