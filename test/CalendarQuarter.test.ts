@@ -181,12 +181,12 @@ describe('CalendarQuarter --', () => {
   describe('constructor --', () => {
     it('should return same value passed to constructor when getting', () => {
       // Arrange
-      const validYear = 2000
-      const validQuarter = QuarterNumber.Q2
+      const validYear       = 2000
+      const validQuarter    = QuarterNumber.Q2
       const calendarQuarter = new CalendarQuarter(validYear, validQuarter)
 
       // Act
-      const year = calendarQuarter.year
+      const year    = calendarQuarter.year
       const quarter = calendarQuarter.quarterNumber
 
       // Assert
@@ -196,8 +196,8 @@ describe('CalendarQuarter --', () => {
 
     it('should return UnitOfTimeGranularity with value of Quarter when getting', () => {
       // Arrange
-      const year = 2000
-      const quarter = QuarterNumber.Q3
+      const year            = 2000
+      const quarter         = QuarterNumber.Q3
       const calendarQuarter = new CalendarQuarter(year, quarter)
 
       // Act
@@ -209,8 +209,8 @@ describe('CalendarQuarter --', () => {
 
     it('should return UnitOfTimeKind with value of Calendar when getting', () => {
       // Arrange
-      const year = 2000
-      const quarter = QuarterNumber.Q3
+      const year            = 2000
+      const quarter         = QuarterNumber.Q3
       const calendarQuarter = new CalendarQuarter(year, quarter)
 
       // Act
@@ -222,7 +222,7 @@ describe('CalendarQuarter --', () => {
 
     it('should throw error when parameter year is undefined', () => {
       // Arrange
-      const year = undefined as any
+      const year    = undefined as any
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -234,7 +234,7 @@ describe('CalendarQuarter --', () => {
 
     it('should throw error when parameter year is NaN', () => {
       // Arrange
-      const year = NaN
+      const year    = NaN
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -246,7 +246,7 @@ describe('CalendarQuarter --', () => {
 
     it('should throw error when parameter year is less than 1', () => {
       // Arrange
-      const year = 0
+      const year    = 0
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -258,7 +258,7 @@ describe('CalendarQuarter --', () => {
 
     it('should throw error when parameter year is greater than 9999', () => {
       // Arrange
-      const year = 10000
+      const year    = 10000
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -270,7 +270,7 @@ describe('CalendarQuarter --', () => {
 
     it('should throw error when parameter quarterNumber is undefined', () => {
       // Arrange
-      const year = 2000
+      const year          = 2000
       const quarterNumber = undefined as any
 
       // Act
@@ -282,7 +282,7 @@ describe('CalendarQuarter --', () => {
 
     it('should throw error when parameter quarterNumber is out of range', () => {
       // Arrange
-      const year = 2000
+      const year          = 2000
       const quarterNumber = 22 as QuarterNumber
 
       // Act
@@ -295,8 +295,8 @@ describe('CalendarQuarter --', () => {
   describe('toString --', () => {
     it('should return friendly string representation when called', () => {
       // Arrange
-      const year = 2000
-      const quarter = QuarterNumber.Q4
+      const year            = 2000
+      const quarter         = QuarterNumber.Q4
       const calendarQuarter = new CalendarQuarter(year, quarter)
 
       // Act
@@ -308,8 +308,8 @@ describe('CalendarQuarter --', () => {
 
     it('should return friendly string representation with a length of 4 characters when year is less than 1000', () => {
       // Arrange
-      const year = 515
-      const quarter = QuarterNumber.Q4
+      const year            = 515
+      const quarter         = QuarterNumber.Q4
       const calendarQuarter = new CalendarQuarter(year, quarter)
 
       // Act

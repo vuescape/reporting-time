@@ -35,7 +35,7 @@ describe('CalendarUnitOfTimeExtensions --', () => {
     })
     it('should return first day of month when parameter unitOfTime is of type CalendarMonth', () => {
       // Arrange
-      const month = new CalendarMonth(2000, MonthNumber.Two)
+      const month       = new CalendarMonth(2000, MonthNumber.Two)
       const expectedDay = new CalendarDay(month.year, month.monthNumber, DayOfMonth.One)
 
       // Act
@@ -108,7 +108,7 @@ describe('CalendarUnitOfTimeExtensions --', () => {
     })
     it('should return last day of month when parameter unitOfTime is of type CalendarMonth', () => {
       // Arrange
-      const month = new CalendarMonth(2000, MonthNumber.Four)
+      const month       = new CalendarMonth(2000, MonthNumber.Four)
       const expectedDay = new CalendarDay(month.year, month.monthNumber, DayOfMonth.Thirty)
 
       // Act

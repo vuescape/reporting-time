@@ -36,7 +36,7 @@ export class GenericMonth extends GenericUnitOfTime implements IHaveAMonth {
       throw new RangeError(`monthNumber, ${monthNumberValue}, must not be Invalid.`)
     }
 
-    this.yearValue = year
+    this.yearValue        = year
     this.monthNumberValue = monthNumberValue
   }
 

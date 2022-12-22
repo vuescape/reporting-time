@@ -28,7 +28,7 @@ export class FiscalQuarter extends FiscalUnitOfTime implements IHaveAQuarter {
     if (!Object.values(QuarterNumber).includes(quarterNumber)) {
       throw new RangeError(`quarterNumber, ${quarterNumber}, must be a valid QuarterNumber.`)
     }
-    this.yearValue = year
+    this.yearValue          = year
     this.quarterNumberValue = quarterNumber
   }
 

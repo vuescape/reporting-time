@@ -19,44 +19,33 @@ describe('ReportingPeriodExtensions.Properties --', () => {
   describe('getUnitOfTimeGranularity --', () => {
     it('should return the granularity of the UnitOfTime used in the reportingPeriod', () => {
       // Arrange
-      const reportingPeriods = [
-        {
-          reportingPeriod: new ReportingPeriod(
-            new CalendarMonth(2017, MonthOfYear.May),
-            new CalendarMonth(2018, MonthOfYear.December),
-          ),
-          expectedGranularity: UnitOfTimeGranularity.Month,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(
-            new FiscalMonth(2017, MonthNumber.Five),
-            new FiscalMonth(2018, MonthNumber.Twelve),
-          ),
-          expectedGranularity: UnitOfTimeGranularity.Month,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(
-            new CalendarQuarter(2017, QuarterNumber.Q2),
-            new CalendarQuarter(2018, QuarterNumber.Q4),
-          ),
-          expectedGranularity: UnitOfTimeGranularity.Quarter,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(
-            new FiscalQuarter(2017, QuarterNumber.Q2),
-            new FiscalQuarter(2018, QuarterNumber.Q4),
-          ),
-          expectedGranularity: UnitOfTimeGranularity.Quarter,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(new CalendarYear(2017), new CalendarYear(2018)),
-          expectedGranularity: UnitOfTimeGranularity.Year,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(new FiscalYear(2017), new FiscalYear(2018)),
-          expectedGranularity: UnitOfTimeGranularity.Year,
-        },
-      ]
+      const reportingPeriods = [{
+        reportingPeriod    : new ReportingPeriod(new CalendarMonth(2017, MonthOfYear.May),
+          new CalendarMonth(2018, MonthOfYear.December),
+        ),
+        expectedGranularity: UnitOfTimeGranularity.Month,
+      }, {
+        reportingPeriod    : new ReportingPeriod(new FiscalMonth(2017, MonthNumber.Five),
+          new FiscalMonth(2018, MonthNumber.Twelve),
+        ),
+        expectedGranularity: UnitOfTimeGranularity.Month,
+      }, {
+        reportingPeriod    : new ReportingPeriod(new CalendarQuarter(2017, QuarterNumber.Q2),
+          new CalendarQuarter(2018, QuarterNumber.Q4),
+        ),
+        expectedGranularity: UnitOfTimeGranularity.Quarter,
+      }, {
+        reportingPeriod    : new ReportingPeriod(new FiscalQuarter(2017, QuarterNumber.Q2),
+          new FiscalQuarter(2018, QuarterNumber.Q4),
+        ),
+        expectedGranularity: UnitOfTimeGranularity.Quarter,
+      }, {
+        reportingPeriod    : new ReportingPeriod(new CalendarYear(2017), new CalendarYear(2018)),
+        expectedGranularity: UnitOfTimeGranularity.Year,
+      }, {
+        reportingPeriod    : new ReportingPeriod(new FiscalYear(2017), new FiscalYear(2018)),
+        expectedGranularity: UnitOfTimeGranularity.Year,
+      }]
 
       // Act, Assert
       reportingPeriods.forEach(_ => {
@@ -67,44 +56,33 @@ describe('ReportingPeriodExtensions.Properties --', () => {
   describe('getUnitOfTimeKind --', () => {
     it('should return the UnitOfTimeKind of the UnitOfTime used in the reportingPeriod', () => {
       // Arrange
-      const reportingPeriods = [
-        {
-          reportingPeriod: new ReportingPeriod(
-            new CalendarMonth(2017, MonthOfYear.May),
-            new CalendarMonth(2018, MonthOfYear.December),
-          ),
-          expectedKind: UnitOfTimeKind.Calendar,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(
-            new FiscalMonth(2017, MonthNumber.Five),
-            new FiscalMonth(2018, MonthNumber.Twelve),
-          ),
-          expectedKind: UnitOfTimeKind.Fiscal,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(
-            new CalendarQuarter(2017, QuarterNumber.Q2),
-            new CalendarQuarter(2018, QuarterNumber.Q4),
-          ),
-          expectedKind: UnitOfTimeKind.Calendar,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(
-            new FiscalQuarter(2017, QuarterNumber.Q2),
-            new FiscalQuarter(2018, QuarterNumber.Q4),
-          ),
-          expectedKind: UnitOfTimeKind.Fiscal,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(new CalendarYear(2017), new CalendarYear(2018)),
-          expectedKind: UnitOfTimeKind.Calendar,
-        },
-        {
-          reportingPeriod: new ReportingPeriod(new FiscalYear(2017), new FiscalYear(2018)),
-          expectedKind: UnitOfTimeKind.Fiscal,
-        },
-      ]
+      const reportingPeriods = [{
+        reportingPeriod: new ReportingPeriod(new CalendarMonth(2017, MonthOfYear.May),
+          new CalendarMonth(2018, MonthOfYear.December),
+        ),
+        expectedKind   : UnitOfTimeKind.Calendar,
+      }, {
+        reportingPeriod: new ReportingPeriod(new FiscalMonth(2017, MonthNumber.Five),
+          new FiscalMonth(2018, MonthNumber.Twelve),
+        ),
+        expectedKind   : UnitOfTimeKind.Fiscal,
+      }, {
+        reportingPeriod: new ReportingPeriod(new CalendarQuarter(2017, QuarterNumber.Q2),
+          new CalendarQuarter(2018, QuarterNumber.Q4),
+        ),
+        expectedKind   : UnitOfTimeKind.Calendar,
+      }, {
+        reportingPeriod: new ReportingPeriod(new FiscalQuarter(2017, QuarterNumber.Q2),
+          new FiscalQuarter(2018, QuarterNumber.Q4),
+        ),
+        expectedKind   : UnitOfTimeKind.Fiscal,
+      }, {
+        reportingPeriod: new ReportingPeriod(new CalendarYear(2017), new CalendarYear(2018)),
+        expectedKind   : UnitOfTimeKind.Calendar,
+      }, {
+        reportingPeriod: new ReportingPeriod(new FiscalYear(2017), new FiscalYear(2018)),
+        expectedKind   : UnitOfTimeKind.Fiscal,
+      }]
 
       // Act, Assert
       reportingPeriods.forEach(_ => {
@@ -115,16 +93,13 @@ describe('ReportingPeriodExtensions.Properties --', () => {
   describe('getUnitsWithin --', () => {
     it('should return number of units contained within reportingPeriod when reportingPeriod is FiscalMonth ', () => {
       // Arrange
-      const reportingPeriod1 = new ReportingPeriod(
-        new FiscalMonth(2016, MonthNumber.Two),
+      const reportingPeriod1 = new ReportingPeriod(new FiscalMonth(2016, MonthNumber.Two),
         new FiscalMonth(2016, MonthNumber.Two),
       )
-      const reportingPeriod2 = new ReportingPeriod(
-        new FiscalMonth(2016, MonthNumber.Two),
+      const reportingPeriod2 = new ReportingPeriod(new FiscalMonth(2016, MonthNumber.Two),
         new FiscalMonth(2016, MonthNumber.Three),
       )
-      const reportingPeriod3 = new ReportingPeriod(
-        new FiscalMonth(2016, MonthNumber.Two),
+      const reportingPeriod3 = new ReportingPeriod(new FiscalMonth(2016, MonthNumber.Two),
         new FiscalMonth(2017, MonthNumber.One),
       )
 
@@ -136,20 +111,20 @@ describe('ReportingPeriodExtensions.Properties --', () => {
       // Assert
       expect(actualUnits1).toEqual([new FiscalMonth(2016, MonthNumber.Two)])
       expect(actualUnits2).toEqual([new FiscalMonth(2016, MonthNumber.Two), new FiscalMonth(2016, MonthNumber.Three)])
-      expect(actualUnits3).toEqual([
-        new FiscalMonth(2016, MonthNumber.Two),
-        new FiscalMonth(2016, MonthNumber.Three),
-        new FiscalMonth(2016, MonthNumber.Four),
-        new FiscalMonth(2016, MonthNumber.Five),
-        new FiscalMonth(2016, MonthNumber.Six),
-        new FiscalMonth(2016, MonthNumber.Seven),
-        new FiscalMonth(2016, MonthNumber.Eight),
-        new FiscalMonth(2016, MonthNumber.Nine),
-        new FiscalMonth(2016, MonthNumber.Ten),
-        new FiscalMonth(2016, MonthNumber.Eleven),
-        new FiscalMonth(2016, MonthNumber.Twelve),
-        new FiscalMonth(2017, MonthNumber.One),
-      ])
+      expect(actualUnits3)
+        .toEqual([new FiscalMonth(2016, MonthNumber.Two), new FiscalMonth(
+          2016,
+          MonthNumber.Three,
+        ), new FiscalMonth(2016, MonthNumber.Four), new FiscalMonth(2016, MonthNumber.Five), new FiscalMonth(
+          2016,
+          MonthNumber.Six,
+        ), new FiscalMonth(2016, MonthNumber.Seven), new FiscalMonth(2016, MonthNumber.Eight), new FiscalMonth(
+          2016,
+          MonthNumber.Nine,
+        ), new FiscalMonth(2016, MonthNumber.Ten), new FiscalMonth(2016, MonthNumber.Eleven), new FiscalMonth(
+          2016,
+          MonthNumber.Twelve,
+        ), new FiscalMonth(2017, MonthNumber.One)])
     })
   })
 })

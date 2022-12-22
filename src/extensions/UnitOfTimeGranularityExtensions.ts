@@ -24,8 +24,7 @@ export class UnitOfTimeGranularityExtensions {
    * true if the first @see UnitOfTimeGranularity is as granular or less granular than the second
    * @see UnitOfTimeGranularity ; false otherwise.
    */
-  public static isAsGranularOrLessGranularThan(
-    granularity1: _UnitOfTimeGranularity,
+  public static isAsGranularOrLessGranularThan(granularity1: _UnitOfTimeGranularity,
     granularity2: _UnitOfTimeGranularity,
   ) {
     const result = !UnitOfTimeGranularityExtensions.isMoreGranularThan(granularity1, granularity2)
@@ -44,7 +43,7 @@ export class UnitOfTimeGranularityExtensions {
   public static isMoreGranularThan(granularity1: _UnitOfTimeGranularity, granularity2: _UnitOfTimeGranularity) {
     const granularityScore1 = UnitOfTimeGranularityExtensions.getGranularityScore(granularity1)
     const granularityScore2 = UnitOfTimeGranularityExtensions.getGranularityScore(granularity2)
-    const result = granularityScore1 < granularityScore2
+    const result            = granularityScore1 < granularityScore2
 
     return result
   }
@@ -58,12 +57,11 @@ export class UnitOfTimeGranularityExtensions {
    * true if the first @see UnitOfTimeGranularity  is as granular or more granular than the second
    * @see UnitOfTimeGranularity ; false otherwise.
    */
-  public static isAsGranularOrMoreGranularThan(
-    granularity1: _UnitOfTimeGranularity,
+  public static isAsGranularOrMoreGranularThan(granularity1: _UnitOfTimeGranularity,
     granularity2: _UnitOfTimeGranularity,
   ) {
     const isMoreGranular = UnitOfTimeGranularityExtensions.isMoreGranularThan(granularity1, granularity2)
-    const result = isMoreGranular || granularity1 === granularity2
+    const result         = isMoreGranular || granularity1 === granularity2
 
     return result
   }

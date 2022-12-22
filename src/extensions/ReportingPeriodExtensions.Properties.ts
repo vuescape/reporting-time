@@ -59,7 +59,7 @@ ReportingPeriod.prototype.getUnitOfTimeKind = function() {
 // tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.getUnitsWithin = function() {
   const allUnits: Array<UnitOfTime> = []
-  let currentUnit = this.start
+  let currentUnit                   = this.start
   do {
     allUnits.push(currentUnit)
     currentUnit = currentUnit.plus(1)

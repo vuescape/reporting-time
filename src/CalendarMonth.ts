@@ -36,7 +36,7 @@ export class CalendarMonth extends CalendarUnitOfTime implements IHaveAMonth {
       throw new RangeError(`monthNumber, ${monthNumberValue}, must not be Invalid.`)
     }
 
-    this.yearValue = year
+    this.yearValue        = year
     this.monthNumberValue = monthNumberValue
   }
 

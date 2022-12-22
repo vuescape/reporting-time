@@ -23,9 +23,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
       const calendarDay = new CalendarDay(2020, MonthNumber.Nine, DayOfMonth.Sixteen)
 
       // Act
-      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarDay>(
-        calendarDay.serializeToSortableString(),
-      )
+      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarDay>(calendarDay.serializeToSortableString())
 
       // Assert
       expect(unitOfTime).toBeTruthy()
@@ -36,9 +34,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
       const calendarMonth = new CalendarMonth(2020, MonthNumber.Nine)
 
       // Act
-      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarMonth>(
-        calendarMonth.serializeToSortableString(),
-      )
+      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarMonth>(calendarMonth.serializeToSortableString())
 
       // Assert
       expect(unitOfTime).toBeTruthy()
@@ -49,9 +45,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
       const calendarQuarter = new CalendarQuarter(2020, QuarterNumber.Q1)
 
       // Act
-      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarQuarter>(
-        calendarQuarter.serializeToSortableString(),
-      )
+      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarQuarter>(calendarQuarter.serializeToSortableString())
 
       // Assert
       expect(unitOfTime).toBeTruthy()
@@ -62,9 +56,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
       const calendarYear = new CalendarYear(2020)
 
       // Act
-      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarYear>(
-        calendarYear.serializeToSortableString(),
-      )
+      const unitOfTime = UnitOfTime.deserializeFromSortableString<CalendarYear>(calendarYear.serializeToSortableString())
 
       // Assert
       expect(unitOfTime).toBeTruthy()
@@ -86,9 +78,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
       const fiscalQuarter = new FiscalQuarter(2020, QuarterNumber.Q1)
 
       // Act
-      const unitOfTime = UnitOfTime.deserializeFromSortableString<FiscalQuarter>(
-        fiscalQuarter.serializeToSortableString(),
-      )
+      const unitOfTime = UnitOfTime.deserializeFromSortableString<FiscalQuarter>(fiscalQuarter.serializeToSortableString())
 
       // Assert
       expect(unitOfTime).toBeTruthy()
@@ -109,9 +99,9 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
   describe('deserializeFromSortableString --', () => {
     it('should be deserialized correctly when deserializing a CalendarMonth', () => {
       // Arrange
-      const year = 2020
-      const monthNumber = MonthNumber.Nine
-      const dayOfMonth = DayOfMonth.Twelve
+      const year             = 2020
+      const monthNumber      = MonthNumber.Nine
+      const dayOfMonth       = DayOfMonth.Twelve
       const unitOfTimeString = `c-${year}-0${monthNumber}-${dayOfMonth}`
 
       // Act
@@ -125,8 +115,8 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be deserialized correctly when deserializing a CalendarMonth', () => {
       // Arrange
-      const year = 2020
-      const monthNumber = MonthNumber.Nine
+      const year             = 2020
+      const monthNumber      = MonthNumber.Nine
       const unitOfTimeString = `c-${year}-0${monthNumber}`
 
       // Act
@@ -139,8 +129,8 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be deserialized correctly when deserializing a CalendarQuarter', () => {
       // Arrange
-      const year = 2020
-      const quarterNumber = QuarterNumber.Q4
+      const year             = 2020
+      const quarterNumber    = QuarterNumber.Q4
       const unitOfTimeString = `c-${year}-Q${quarterNumber}`
 
       // Act
@@ -153,7 +143,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be deserialized correctly when deserializing a CalendarYear', () => {
       // Arrange
-      const year = 2020
+      const year             = 2020
       const unitOfTimeString = `c-${year}`
 
       // Act
@@ -165,8 +155,8 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be deserialized correctly when deserializing a FiscalMonth', () => {
       // Arrange
-      const year = 2020
-      const monthNumber = MonthNumber.Nine
+      const year             = 2020
+      const monthNumber      = MonthNumber.Nine
       const unitOfTimeString = `f-${year}-0${monthNumber}`
 
       // Act
@@ -179,8 +169,8 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be deserialized correctly when deserializing a FiscalQuarter', () => {
       // Arrange
-      const year = 2020
-      const quarterNumber = QuarterNumber.Q4
+      const year             = 2020
+      const quarterNumber    = QuarterNumber.Q4
       const unitOfTimeString = `f-${year}-Q${quarterNumber}`
 
       // Act
@@ -193,7 +183,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be deserialized correctly when deserializing a FiscalYear', () => {
       // Arrange
-      const year = 2020
+      const year             = 2020
       const unitOfTimeString = `f-${year}`
 
       // Act
@@ -207,10 +197,10 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
   describe('serializeToSortableString --', () => {
     it('should be serialized correctly when serializing a CalendarDay', () => {
       // Arrange
-      const year = 2020
+      const year        = 2020
       const monthNumber = MonthNumber.Five
-      const dayOfMonth = DayOfMonth.TwentyThree
-      const unitOfTime = new CalendarDay(year, monthNumber, dayOfMonth)
+      const dayOfMonth  = DayOfMonth.TwentyThree
+      const unitOfTime  = new CalendarDay(year, monthNumber, dayOfMonth)
 
       // Act
       const serializedString = unitOfTime.serializeToSortableString()
@@ -220,9 +210,9 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be serialized correctly when serializing a CalendarMonth', () => {
       // Arrange
-      const year = 2020
+      const year        = 2020
       const monthNumber = MonthNumber.Five
-      const unitOfTime = new CalendarMonth(year, monthNumber)
+      const unitOfTime  = new CalendarMonth(year, monthNumber)
 
       // Act
       const serializedString = unitOfTime.serializeToSortableString()
@@ -232,9 +222,9 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be serialized correctly when serializing a CalendarQuarter', () => {
       // Arrange
-      const year = 2020
+      const year          = 2020
       const quarterNumber = QuarterNumber.Q2
-      const unitOfTime = new CalendarQuarter(year, quarterNumber)
+      const unitOfTime    = new CalendarQuarter(year, quarterNumber)
 
       // Act
       const serializedString = unitOfTime.serializeToSortableString()
@@ -244,7 +234,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be serialized correctly when serializing a CalendarYear', () => {
       // Arrange
-      const year = 2020
+      const year       = 2020
       const unitOfTime = new CalendarYear(year)
 
       // Act
@@ -255,9 +245,9 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be serialized correctly when serializing a FiscalMonth', () => {
       // Arrange
-      const year = 2020
+      const year        = 2020
       const monthNumber = MonthNumber.Five
-      const unitOfTime = new FiscalMonth(year, monthNumber)
+      const unitOfTime  = new FiscalMonth(year, monthNumber)
 
       // Act
       const serializedString = unitOfTime.serializeToSortableString()
@@ -267,9 +257,9 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be serialized correctly when serializing a FiscalQuarter', () => {
       // Arrange
-      const year = 2020
+      const year          = 2020
       const quarterNumber = QuarterNumber.Q2
-      const unitOfTime = new FiscalQuarter(year, quarterNumber)
+      const unitOfTime    = new FiscalQuarter(year, quarterNumber)
 
       // Act
       const serializedString = unitOfTime.serializeToSortableString()
@@ -279,7 +269,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
     })
     it('should be serialized correctly when serializing a FiscalYear', () => {
       // Arrange
-      const year = 2020
+      const year       = 2020
       const unitOfTime = new FiscalYear(year)
 
       // Act
@@ -318,16 +308,20 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
         public equals(value: UnitOfTime): boolean {
           throw new Error('Method not implemented.')
         }
+
         public get unitOfTimeGranularity(): UnitOfTimeGranularity {
           throw new Error('Method not implemented.')
         }
+
         public valueOf(): number {
           throw new Error('Method not implemented.')
         }
+
         public toString(): string {
           throw new Error('Method not implemented.')
         }
       }
+
       const invalidUnitOfTime = new InvalidUnitOfTime()
 
       // Act

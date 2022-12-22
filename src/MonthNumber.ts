@@ -13,60 +13,60 @@ export enum MonthNumber {
   /// <summary>
   /// Month 1.
   /// </summary>
-  One = 1,
+  One     = 1,
 
   /// <summary>
   /// Month 2.
   /// </summary>
-  Two = 2,
+  Two     = 2,
 
   /// <summary>
   /// Month 3.
   /// </summary>
-  Three = 3,
+  Three   = 3,
 
   /// <summary>
   /// Month 4.
   /// </summary>
-  Four = 4,
+  Four    = 4,
 
   /// <summary>
   /// Month 5.
   /// </summary>
-  Five = 5,
+  Five    = 5,
 
   /// <summary>
   /// Month 6.
   /// </summary>
-  Six = 6,
+  Six     = 6,
 
   /// <summary>
   /// Month 7.
   /// </summary>
-  Seven = 7,
+  Seven   = 7,
 
   /// <summary>
   /// Month 8.
   /// </summary>
-  Eight = 8,
+  Eight   = 8,
 
   /// <summary>
   /// Month 9.
   /// </summary>
-  Nine = 9,
+  Nine    = 9,
 
   /// <summary>
   /// Month 10.
   /// </summary>
-  Ten = 10,
+  Ten     = 10,
 
   /// <summary>
   /// Month 11.
   /// </summary>
-  Eleven = 11,
+  Eleven  = 11,
 
   /// <summary>
   /// Month 12.
   /// </summary>
-  Twelve = 12,
+  Twelve  = 12,
 }

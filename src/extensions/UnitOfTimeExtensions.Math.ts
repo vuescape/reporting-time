@@ -30,23 +30,17 @@ UnitOfTime.prototype.plus = function(unitsToAdd: number, granularityOfUnitsToAdd
   return plusInternalWithGranularity(this, unitsToAdd, granularityOfUnitsToAdd)
 }
 
-const plusInternalWithGranularity = <T extends UnitOfTime>(
-  unitOfTime: T,
+const plusInternalWithGranularity = <T extends UnitOfTime>(unitOfTime: T,
   unitsToAdd: number,
   granularityOfUnitsToAdd: UnitOfTimeGranularity,
 ): T => {
-  if (
-    granularityOfUnitsToAdd === UnitOfTimeGranularity.Invalid ||
-    granularityOfUnitsToAdd === UnitOfTimeGranularity.Unbounded
-  ) {
+  if (granularityOfUnitsToAdd === UnitOfTimeGranularity.Invalid || granularityOfUnitsToAdd === UnitOfTimeGranularity.Unbounded) {
     throw new RangeError('UnitOfTimeGranularity cannot be Invalid or Unbounded')
   }
 
   if (UnitOfTimeGranularityExtensions.isMoreGranularThan(granularityOfUnitsToAdd, unitOfTime.unitOfTimeGranularity)) {
-    throw new Error(
-      // tslint:disable-next-line: max-line-length
-      'granularityOfUnitsToAdd is more granular than unitOfTime.  Only units that are as granular or less granular than a unit-of-time can be added to that unit-of-time.',
-    )
+    throw new Error(// tslint:disable-next-line: max-line-length
+      'granularityOfUnitsToAdd is more granular than unitOfTime.  Only units that are as granular or less granular than a unit-of-time can be added to that unit-of-time.')
   }
 
   if (unitOfTime.unitOfTimeGranularity === granularityOfUnitsToAdd) {
@@ -102,10 +96,10 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
   }
 
   if (unitOfTime instanceof GenericQuarter) {
-    let year = unitOfTime.year
+    let year          = unitOfTime.year
     let quarterNumber = unitOfTime.quarterNumber
 
-    year = year + Math.trunc(unitsToAdd / 4)
+    year          = year + Math.trunc(unitsToAdd / 4)
     quarterNumber = quarterNumber + (unitsToAdd % 4)
 
     if (quarterNumber > 4) {
@@ -129,8 +123,7 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
   if (unitOfTime instanceof CalendarDay) {
     const calendarDayAsDate = new Date(unitOfTime.year, unitOfTime.monthNumber - 1, unitOfTime.dayOfMonth)
     calendarDayAsDate.setDate(calendarDayAsDate.getDate() + unitsToAdd)
-    const result = new CalendarDay(
-      calendarDayAsDate.getFullYear(),
+    const result = new CalendarDay(calendarDayAsDate.getFullYear(),
       calendarDayAsDate.getMonth() + 1,
       calendarDayAsDate.getDate(),
     )
@@ -140,8 +133,11 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
 
   if (unitOfTime instanceof CalendarMonth) {
     const unitOfTimeAsCalendarMonth = unitOfTime as CalendarMonth
-    const genericCalendarMonth = new GenericMonth(unitOfTimeAsCalendarMonth.year, unitOfTimeAsCalendarMonth.monthNumber)
-    const genericMonth = plusInternal(genericCalendarMonth, unitsToAdd)
+    const genericCalendarMonth      = new GenericMonth(
+      unitOfTimeAsCalendarMonth.year,
+      unitOfTimeAsCalendarMonth.monthNumber,
+    )
+    const genericMonth              = plusInternal(genericCalendarMonth, unitsToAdd)
 
     const result = new CalendarMonth(genericMonth.year, genericMonth.monthNumber)
     return (result as unknown) as T
@@ -149,11 +145,10 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
 
   if (unitOfTime instanceof CalendarQuarter) {
     const unitOfTimeAsCalendarQuarter = unitOfTime as CalendarQuarter
-    const genericCalendarQuarter = new GenericQuarter(
-      unitOfTimeAsCalendarQuarter.year,
+    const genericCalendarQuarter      = new GenericQuarter(unitOfTimeAsCalendarQuarter.year,
       unitOfTimeAsCalendarQuarter.quarterNumber,
     )
-    const genericQuarter = plusInternal(genericCalendarQuarter, unitsToAdd)
+    const genericQuarter              = plusInternal(genericCalendarQuarter, unitsToAdd)
 
     const result = new CalendarQuarter(genericQuarter.year, genericQuarter.quarterNumber)
     return (result as unknown) as T
@@ -161,8 +156,8 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
 
   if (unitOfTime instanceof CalendarYear) {
     const unitOfTimeAsCalendarYear = unitOfTime as CalendarYear
-    const genericCalendarYear = new GenericYear(unitOfTimeAsCalendarYear.year)
-    const genericYear = plusInternal(genericCalendarYear, unitsToAdd)
+    const genericCalendarYear      = new GenericYear(unitOfTimeAsCalendarYear.year)
+    const genericYear              = plusInternal(genericCalendarYear, unitsToAdd)
 
     const result = new CalendarYear(genericYear.year)
     return (result as unknown) as T
@@ -170,8 +165,8 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
 
   if (unitOfTime instanceof FiscalMonth) {
     const unitOfTimeAsFiscalMonth = unitOfTime as FiscalMonth
-    const genericFiscalMonth = new GenericMonth(unitOfTimeAsFiscalMonth.year, unitOfTimeAsFiscalMonth.monthNumber)
-    const genericMonth = plusInternal(genericFiscalMonth, unitsToAdd)
+    const genericFiscalMonth      = new GenericMonth(unitOfTimeAsFiscalMonth.year, unitOfTimeAsFiscalMonth.monthNumber)
+    const genericMonth            = plusInternal(genericFiscalMonth, unitsToAdd)
 
     const result = new FiscalMonth(genericMonth.year, genericMonth.monthNumber)
     return (result as unknown) as T
@@ -179,11 +174,10 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
 
   if (unitOfTime instanceof FiscalQuarter) {
     const unitOfTimeAsFiscalQuarter = unitOfTime as FiscalQuarter
-    const genericFiscalQuarter = new GenericQuarter(
-      unitOfTimeAsFiscalQuarter.year,
+    const genericFiscalQuarter      = new GenericQuarter(unitOfTimeAsFiscalQuarter.year,
       unitOfTimeAsFiscalQuarter.quarterNumber,
     )
-    const genericQuarter = plusInternal(genericFiscalQuarter, unitsToAdd)
+    const genericQuarter            = plusInternal(genericFiscalQuarter, unitsToAdd)
 
     const result = new FiscalQuarter(genericQuarter.year, genericQuarter.quarterNumber)
     return (result as unknown) as T
@@ -191,8 +185,8 @@ const plusInternal = <T extends UnitOfTime>(unitOfTime: T, unitsToAdd: number): 
 
   if (unitOfTime instanceof FiscalYear) {
     const unitOfTimeAsCalendarYear = unitOfTime as FiscalYear
-    const genericFiscalYear = new GenericYear(unitOfTimeAsCalendarYear.year)
-    const genericYear = plusInternal(genericFiscalYear, unitsToAdd)
+    const genericFiscalYear        = new GenericYear(unitOfTimeAsCalendarYear.year)
+    const genericYear              = plusInternal(genericFiscalYear, unitsToAdd)
 
     const result = new FiscalYear(genericYear.year)
     return (result as unknown) as T

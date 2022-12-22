@@ -69,8 +69,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Month
 
       // Act
-      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(
-        granularity1,
+      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(granularity1,
         granularity2,
       )
 
@@ -83,8 +82,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Quarter
 
       // Act
-      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(
-        granularity1,
+      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(granularity1,
         granularity2,
       )
 
@@ -97,8 +95,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Quarter
 
       // Act
-      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(
-        granularity1,
+      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(granularity1,
         granularity2,
       )
 
@@ -111,8 +108,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Year
 
       // Act
-      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(
-        granularity1,
+      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(granularity1,
         granularity2,
       )
 
@@ -125,8 +121,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Quarter
 
       // Act
-      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(
-        granularity1,
+      const isAsGranularOrLessGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(granularity1,
         granularity2,
       )
 
@@ -198,8 +193,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Month
 
       // Act
-      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(
-        granularity1,
+      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(granularity1,
         granularity2,
       )
 
@@ -212,8 +206,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Quarter
 
       // Act
-      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(
-        granularity1,
+      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(granularity1,
         granularity2,
       )
 
@@ -226,8 +219,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Quarter
 
       // Act
-      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(
-        granularity1,
+      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(granularity1,
         granularity2,
       )
 
@@ -240,8 +232,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Year
 
       // Act
-      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(
-        granularity1,
+      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(granularity1,
         granularity2,
       )
 
@@ -254,8 +245,7 @@ describe('UnitOfTimeGranularityExtensions --', () => {
       const granularity2 = UnitOfTimeGranularity.Quarter
 
       // Act
-      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(
-        granularity1,
+      const isAsGranularOrMoreGranularThan = UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(granularity1,
         granularity2,
       )
 

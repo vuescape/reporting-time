@@ -8,14 +8,14 @@ export enum QuarterNumber {
   Invalid = 0,
 
   /** First quarter. */
-  Q1 = 1,
+  Q1      = 1,
 
   /** Second quarter. */
-  Q2 = 2,
+  Q2      = 2,
 
   /** Third quarter. */
-  Q3 = 3,
+  Q3      = 3,
 
   /** Fourth quarter. */
-  Q4 = 4,
+  Q4      = 4,
 }

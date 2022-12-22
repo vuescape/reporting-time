@@ -1,6 +1,6 @@
 import expect from 'expect'
 
-import { CalendarYear, FiscalQuarter, QuarterNumber, UnitOfTimeGranularity, UnitOfTimeKind  } from '../src/index'
+import { CalendarYear, FiscalQuarter, QuarterNumber, UnitOfTimeGranularity, UnitOfTimeKind } from '../src/index'
 
 describe('Reporting Period --', () => {
   describe('equals --', () => {
@@ -177,12 +177,12 @@ describe('Reporting Period --', () => {
   describe('constructor --', () => {
     it('should return same value passed to constructor when getting', () => {
       // Arrange
-      const validYear = 2000
-      const validQuarter = QuarterNumber.Q2
+      const validYear     = 2000
+      const validQuarter  = QuarterNumber.Q2
       const fiscalQuarter = new FiscalQuarter(validYear, validQuarter)
 
       // Act
-      const year = fiscalQuarter.year
+      const year    = fiscalQuarter.year
       const quarter = fiscalQuarter.quarterNumber
 
       // Assert
@@ -192,8 +192,8 @@ describe('Reporting Period --', () => {
 
     it('should return UnitOfTimeGranularity with value of Quarter when getting', () => {
       // Arrange
-      const year = 2000
-      const quarter = QuarterNumber.Q3
+      const year          = 2000
+      const quarter       = QuarterNumber.Q3
       const fiscalQuarter = new FiscalQuarter(year, quarter)
 
       // Act
@@ -205,8 +205,8 @@ describe('Reporting Period --', () => {
 
     it('should return UnitOfTimeKind with value of Fiscal when getting', () => {
       // Arrange
-      const year = 2000
-      const quarter = QuarterNumber.Q3
+      const year          = 2000
+      const quarter       = QuarterNumber.Q3
       const fiscalQuarter = new FiscalQuarter(year, quarter)
 
       // Act
@@ -218,7 +218,7 @@ describe('Reporting Period --', () => {
 
     it('should throw error when parameter year is undefined', () => {
       // Arrange
-      const year = undefined as any
+      const year    = undefined as any
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -230,7 +230,7 @@ describe('Reporting Period --', () => {
 
     it('should throw error when parameter year is NaN', () => {
       // Arrange
-      const year = NaN
+      const year    = NaN
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -242,7 +242,7 @@ describe('Reporting Period --', () => {
 
     it('should throw error when parameter year is less than 1', () => {
       // Arrange
-      const year = 0
+      const year    = 0
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -254,7 +254,7 @@ describe('Reporting Period --', () => {
 
     it('should throw error when parameter year is greater than 9999', () => {
       // Arrange
-      const year = 10000
+      const year    = 10000
       const quarter = QuarterNumber.Q3
 
       // Act
@@ -266,7 +266,7 @@ describe('Reporting Period --', () => {
 
     it('should throw error when parameter quarterNumber is undefined', () => {
       // Arrange
-      const year = 2000
+      const year          = 2000
       const quarterNumber = undefined as any
 
       // Act
@@ -278,7 +278,7 @@ describe('Reporting Period --', () => {
 
     it('should throw error when parameter quarterNumber is out of range', () => {
       // Arrange
-      const year = 2000
+      const year          = 2000
       const quarterNumber = 22 as QuarterNumber
 
       // Act
@@ -291,8 +291,8 @@ describe('Reporting Period --', () => {
   describe('toString --', () => {
     it('should return friendly string representation when called', () => {
       // Arrange
-      const year = 2000
-      const quarter = QuarterNumber.Q4
+      const year          = 2000
+      const quarter       = QuarterNumber.Q4
       const fiscalQuarter = new FiscalQuarter(year, quarter)
 
       // Act
@@ -304,8 +304,8 @@ describe('Reporting Period --', () => {
 
     it('should return friendly string representation with a length of 4 characters when year is less than 1000', () => {
       // Arrange
-      const year = 515
-      const quarter = QuarterNumber.Q4
+      const year          = 515
+      const quarter       = QuarterNumber.Q4
       const fiscalQuarter = new FiscalQuarter(year, quarter)
 
       // Act

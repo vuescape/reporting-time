@@ -74,13 +74,13 @@ CalendarUnitOfTime.prototype.getLastCalendarDay = function() {
 
   if (this instanceof CalendarMonth) {
     const daysInMonth = new Date(this.year, this.monthNumber, 0).getDate()
-    const result = new CalendarDay(this.year, this.monthNumber, daysInMonth)
+    const result      = new CalendarDay(this.year, this.monthNumber, daysInMonth)
     return result
   }
 
   if (this instanceof CalendarQuarter) {
     const lastMonthInQuarter = new CalendarMonth(this.year, this.quarterNumber * 3)
-    const result = lastMonthInQuarter.getLastCalendarDay()
+    const result             = lastMonthInQuarter.getLastCalendarDay()
     return result
   }
 

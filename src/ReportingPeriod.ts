@@ -22,7 +22,7 @@ export class ReportingPeriod {
       throw new RangeError('start is greater than end.')
     }
     this.startValue = start
-    this.endValue = end
+    this.endValue   = end
   }
 
   public equals(value: ReportingPeriod) {

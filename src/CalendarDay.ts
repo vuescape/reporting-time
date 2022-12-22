@@ -51,9 +51,9 @@ export class CalendarDay extends CalendarUnitOfTime implements IHaveAMonth {
       throw new RangeError(`dayOfMonth, ${dayOfMonth}, must not be Invalid.`)
     }
 
-    this.yearValue = year
+    this.yearValue        = year
     this.monthNumberValue = monthNumberValue
-    this.dayOfMonthValue = dayOfMonthValue
+    this.dayOfMonthValue  = dayOfMonthValue
   }
 
   public equals(value: CalendarDay) {
@@ -63,8 +63,7 @@ export class CalendarDay extends CalendarUnitOfTime implements IHaveAMonth {
     if (!((value as any) instanceof CalendarDay)) {
       return false
     }
-    const result =
-      this.year === value.year && this.monthNumber === value.monthNumber && this.dayOfMonth === value.dayOfMonth
+    const result = this.year === value.year && this.monthNumber === value.monthNumber && this.dayOfMonth === value.dayOfMonth
     return result
   }
 

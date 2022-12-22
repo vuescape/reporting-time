@@ -206,15 +206,15 @@ describe('CalendarDay --', () => {
   describe('constructor --', () => {
     it('should return same value passed to constructor when getting', () => {
       // Arrange
-      const validYear = 2000
-      const validMonth = MonthNumber.Seven
-      const validDay = DayOfMonth.Seven
+      const validYear   = 2000
+      const validMonth  = MonthNumber.Seven
+      const validDay    = DayOfMonth.Seven
       const calendarDay = new CalendarDay(validYear, validMonth, validDay)
 
       // Act
-      const year = calendarDay.year
+      const year  = calendarDay.year
       const month = calendarDay.monthNumber
-      const day = calendarDay.dayOfMonth
+      const day   = calendarDay.dayOfMonth
 
       // Assert
       expect(year).toBe(validYear)
@@ -224,9 +224,9 @@ describe('CalendarDay --', () => {
 
     it('should return UnitOfTimeGranularity with value of Day when getting', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.Six
-      const day = DayOfMonth.TwentyFive
+      const year        = 2000
+      const month       = MonthNumber.Six
+      const day         = DayOfMonth.TwentyFive
       const calendarDay = new CalendarDay(year, month, day)
 
       // Act
@@ -237,9 +237,9 @@ describe('CalendarDay --', () => {
     })
 
     it('should return UnitOfTimeKind with value of Calendar when getting', () => {
-      const year = 2000
-      const month = MonthNumber.Six
-      const day = DayOfMonth.TwentyFive
+      const year        = 2000
+      const month       = MonthNumber.Six
+      const day         = DayOfMonth.TwentyFive
       const calendarDay = new CalendarDay(year, month, day)
 
       // Act
@@ -251,9 +251,9 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter year is undefined', () => {
       // Arrange
-      const year = undefined as any
+      const year  = undefined as any
       const month = MonthNumber.Three
-      const day = DayOfMonth.TwentyFive
+      const day   = DayOfMonth.TwentyFive
 
       // Act
       const constructor = () => new CalendarDay(year, month, day)
@@ -264,9 +264,9 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter year is NaN', () => {
       // Arrange
-      const year = NaN
+      const year  = NaN
       const month = MonthNumber.Twelve
-      const day = DayOfMonth.TwentyFive
+      const day   = DayOfMonth.TwentyFive
 
       // Act
       const constructor = () => new CalendarDay(year, month, day)
@@ -277,9 +277,9 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter year is less than 1', () => {
       // Arrange
-      const year = 0
+      const year  = 0
       const month = MonthNumber.Two
-      const day = DayOfMonth.TwentyFive
+      const day   = DayOfMonth.TwentyFive
 
       // Act
       const constructor = () => new CalendarDay(year, month, day)
@@ -290,9 +290,9 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter year is greater than 9999', () => {
       // Arrange
-      const year = 10000
+      const year  = 10000
       const month = MonthNumber.Two
-      const day = DayOfMonth.TwentyFive
+      const day   = DayOfMonth.TwentyFive
 
       // Act
       const constructor = () => new CalendarDay(year, month, day)
@@ -303,9 +303,9 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter monthNumber is undefined', () => {
       // Arrange
-      const year = 2000
+      const year  = 2000
       const month = undefined as any
-      const day = DayOfMonth.TwentyFive
+      const day   = DayOfMonth.TwentyFive
 
       // Act
       const constructor = () => new CalendarDay(year, month, day)
@@ -316,9 +316,9 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter monthNumber is out of range', () => {
       // Arrange
-      const year = 2000
+      const year  = 2000
       const month = 22 as MonthNumber
-      const day = DayOfMonth.TwentyFour
+      const day   = DayOfMonth.TwentyFour
 
       // Act
       const constructor = () => new CalendarDay(year, month, day)
@@ -329,8 +329,8 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter dayOfMonth is undefined', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.Seven
+      const year       = 2000
+      const month      = MonthNumber.Seven
       const dayOfMonth = undefined as any
 
       // Act
@@ -342,8 +342,8 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter dayOfMonth is out of range', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.Seven
+      const year       = 2000
+      const month      = MonthNumber.Seven
       const dayOfMonth = 99 as DayOfMonth
 
       // Act
@@ -355,8 +355,8 @@ describe('CalendarDay --', () => {
 
     it('should throw error when parameter dayOfMonth is Invalid', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.Seven
+      const year       = 2000
+      const month      = MonthNumber.Seven
       const dayOfMonth = DayOfMonth.Invalid
 
       // Act
@@ -369,9 +369,9 @@ describe('CalendarDay --', () => {
   describe('toString --', () => {
     it('should return friendly string representation when called', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.One
-      const day = DayOfMonth.One
+      const year        = 2000
+      const month       = MonthNumber.One
+      const day         = DayOfMonth.One
       const calendarDay = new CalendarDay(year, month, day)
 
       // Act
@@ -383,9 +383,9 @@ describe('CalendarDay --', () => {
 
     it('should return friendly string representation with 4 characters in year when year is less than 1000', () => {
       // Arrange
-      const year = 515
-      const month = MonthNumber.Two
-      const day = DayOfMonth.One
+      const year        = 515
+      const month       = MonthNumber.Two
+      const day         = DayOfMonth.One
       const calendarDay = new CalendarDay(year, month, day)
 
       // Act
@@ -396,31 +396,37 @@ describe('CalendarDay --', () => {
     })
 
     // tslint:disable-next-line: max-line-length
-    it('should return friendly string representation with correct 2 characters in month when MonthNumber is less than 10', () => {
-      const year = 2112
-      const month = MonthNumber.Two
-      const day = DayOfMonth.TwentyThree
-      const calendarDay = new CalendarDay(year, month, day)
+    it(
+      'should return friendly string representation with correct 2 characters in month when MonthNumber is less than 10',
+      () => {
+        const year        = 2112
+        const month       = MonthNumber.Two
+        const day         = DayOfMonth.TwentyThree
+        const calendarDay = new CalendarDay(year, month, day)
 
-      // Act
-      const result = calendarDay.toString()
+        // Act
+        const result = calendarDay.toString()
 
-      // Assert
-      expect(result).toBe(`${year}-0${month}-${day}`)
-    })
+        // Assert
+        expect(result).toBe(`${year}-0${month}-${day}`)
+      },
+    )
 
     // tslint:disable-next-line: max-line-length
-    it('should return friendly string representation with correct 2 characters in day when DayOfMonth is less than 10', () => {
-      const year = 2112
-      const month = MonthNumber.Twelve
-      const day = DayOfMonth.One
-      const calendarDay = new CalendarDay(year, month, day)
+    it(
+      'should return friendly string representation with correct 2 characters in day when DayOfMonth is less than 10',
+      () => {
+        const year        = 2112
+        const month       = MonthNumber.Twelve
+        const day         = DayOfMonth.One
+        const calendarDay = new CalendarDay(year, month, day)
 
-      // Act
-      const result = calendarDay.toString()
+        // Act
+        const result = calendarDay.toString()
 
-      // Assert
-      expect(result).toBe(`${year}-${month}-0${day}`)
-    })
+        // Assert
+        expect(result).toBe(`${year}-${month}-0${day}`)
+      },
+    )
   })
 })

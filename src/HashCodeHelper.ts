@@ -17,7 +17,7 @@ export class HashCodeHelper {
   /// </summary>
   private static readonly HashCodeInitializer = 17
 
-  private value: number
+  private readonly value: number
 
   public constructor(value: number) {
     this.value = value
@@ -29,7 +29,7 @@ export class HashCodeHelper {
 
   public Hash<T>(item: T): HashCodeHelper {
     const hashCode = this.Value * HashCodeHelper.HashCodeMultiplier + ((item as any).valueOf() || 0)
-    const result = new HashCodeHelper(hashCode)
+    const result   = new HashCodeHelper(hashCode)
     return result
   }
 }

@@ -39,14 +39,12 @@ ReportingPeriod.deserializeFromString = (reportingPeriod: string): ReportingPeri
 
   const tokens = reportingPeriod.split(',')
   if (tokens.length !== 2 || tokens.find(_ => isNullOrWhiteSpace(_))) {
-    throw new Error(
-      // tslint:disable-next-line: max-line-length
-      `Could not deserialize reportingPeriod string, '${reportingPeriod}'. It appears to be malformed: start and end are not provided.`,
-    )
+    throw new Error(// tslint:disable-next-line: max-line-length
+      `Could not deserialize reportingPeriod string, '${reportingPeriod}'. It appears to be malformed: start and end are not provided.`)
   }
 
   const start = UnitOfTime.deserializeFromSortableString(tokens[0])
-  const end = UnitOfTime.deserializeFromSortableString(tokens[1])
+  const end   = UnitOfTime.deserializeFromSortableString(tokens[1])
 
   const result = new ReportingPeriod(start, end)
   return result

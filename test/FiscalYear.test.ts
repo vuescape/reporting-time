@@ -156,7 +156,7 @@ describe('FiscalYear --', () => {
   describe('constructor --', () => {
     it('should return same value passed to constructor when getting', () => {
       // Arrange
-      const validYear = 2000
+      const validYear  = 2000
       const fiscalYear = new FiscalYear(validYear)
 
       // Act
@@ -168,7 +168,7 @@ describe('FiscalYear --', () => {
 
     it('should return UnitOfTimeGranularity with value of Year when getting', () => {
       // Arrange
-      const year = 2000
+      const year       = 2000
       const fiscalYear = new FiscalYear(year)
 
       // Act
@@ -180,7 +180,7 @@ describe('FiscalYear --', () => {
 
     it('should return UnitOfTimeKind with value of Fiscal when getting', () => {
       // Arrange
-      const year = 2000
+      const year       = 2000
       const fiscalYear = new FiscalYear(year)
 
       // Act
@@ -237,7 +237,7 @@ describe('FiscalYear --', () => {
   describe('toString --', () => {
     it('should return friendly string representation when called', () => {
       // Arrange
-      const year = 2000
+      const year       = 2000
       const fiscalYear = new FiscalYear(year)
 
       // Act
@@ -249,7 +249,7 @@ describe('FiscalYear --', () => {
 
     it('should return friendly string representation with a length of 4 characters when year is less than 1000', () => {
       // Arrange
-      const year = 515
+      const year       = 515
       const fiscalYear = new FiscalYear(year)
 
       // Act

@@ -181,12 +181,12 @@ describe('FiscalMonth --', () => {
   describe('constructor --', () => {
     it('should return same value passed to constructor when getting', () => {
       // Arrange
-      const validYear = 2000
-      const validMonth = MonthNumber.Seven
+      const validYear   = 2000
+      const validMonth  = MonthNumber.Seven
       const fiscalMonth = new FiscalMonth(validYear, validMonth)
 
       // Act
-      const year = fiscalMonth.year
+      const year  = fiscalMonth.year
       const month = fiscalMonth.monthNumber
 
       // Assert
@@ -196,8 +196,8 @@ describe('FiscalMonth --', () => {
 
     it('should return UnitOfTimeGranularity with value of Month when getting', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.Six
+      const year        = 2000
+      const month       = MonthNumber.Six
       const fiscalMonth = new FiscalMonth(year, month)
 
       // Act
@@ -209,8 +209,8 @@ describe('FiscalMonth --', () => {
 
     it('should return UnitOfTimeKind with value of Fiscal when getting', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.Ten
+      const year        = 2000
+      const month       = MonthNumber.Ten
       const fiscalMonth = new FiscalMonth(year, month)
 
       // Act
@@ -222,7 +222,7 @@ describe('FiscalMonth --', () => {
 
     it('should throw error when parameter year is undefined', () => {
       // Arrange
-      const year = undefined as any
+      const year  = undefined as any
       const month = MonthNumber.Three
 
       // Act
@@ -234,7 +234,7 @@ describe('FiscalMonth --', () => {
 
     it('should throw error when parameter year is NaN', () => {
       // Arrange
-      const year = NaN
+      const year  = NaN
       const month = MonthNumber.Twelve
 
       // Act
@@ -246,7 +246,7 @@ describe('FiscalMonth --', () => {
 
     it('should throw error when parameter year is less than 1', () => {
       // Arrange
-      const year = 0
+      const year  = 0
       const month = MonthNumber.Two
 
       // Act
@@ -258,7 +258,7 @@ describe('FiscalMonth --', () => {
 
     it('should throw error when parameter year is greater than 9999', () => {
       // Arrange
-      const year = 10000
+      const year  = 10000
       const month = MonthNumber.Two
 
       // Act
@@ -270,7 +270,7 @@ describe('FiscalMonth --', () => {
 
     it('should throw error when parameter monthNumber is undefined', () => {
       // Arrange
-      const year = 2000
+      const year        = 2000
       const monthNumber = undefined as any
 
       // Act
@@ -282,7 +282,7 @@ describe('FiscalMonth --', () => {
 
     it('should throw error when parameter monthNumber is out of range', () => {
       // Arrange
-      const year = 2000
+      const year  = 2000
       const month = 22 as MonthNumber
 
       // Act
@@ -295,8 +295,8 @@ describe('FiscalMonth --', () => {
   describe('toString --', () => {
     it('should return friendly string representation when called', () => {
       // Arrange
-      const year = 2000
-      const month = MonthNumber.One
+      const year        = 2000
+      const month       = MonthNumber.One
       const fiscalMonth = new FiscalMonth(year, month)
 
       // Act
@@ -308,8 +308,8 @@ describe('FiscalMonth --', () => {
 
     it('should return friendly string representation with 4 characters in year when year is less than 1000', () => {
       // Arrange
-      const year = 515
-      const month = MonthNumber.Two
+      const year        = 515
+      const month       = MonthNumber.Two
       const fiscalMonth = new FiscalMonth(year, month)
 
       // Act
@@ -321,8 +321,8 @@ describe('FiscalMonth --', () => {
 
     it('should return friendly string representation with correct month suffix when MonthNumber is Three', () => {
       // Arrange
-      const year = 2020
-      const month = MonthNumber.Three
+      const year        = 2020
+      const month       = MonthNumber.Three
       const fiscalMonth = new FiscalMonth(year, month)
 
       // Act
@@ -333,17 +333,20 @@ describe('FiscalMonth --', () => {
     })
 
     // tslint:disable-next-line: max-line-length
-    it('should return friendly string representation with correct month suffix when MonthNumber is greater than Three', () => {
-      // Arrange
-      const year = 2020
-      const month = MonthNumber.Eleven
-      const fiscalMonth = new FiscalMonth(year, month)
+    it(
+      'should return friendly string representation with correct month suffix when MonthNumber is greater than Three',
+      () => {
+        // Arrange
+        const year        = 2020
+        const month       = MonthNumber.Eleven
+        const fiscalMonth = new FiscalMonth(year, month)
 
-      // Act
-      const result = fiscalMonth.toString()
+        // Act
+        const result = fiscalMonth.toString()
 
-      // Assert
-      expect(result).toBe(`${month}th month of FY${year}`)
-    })
+        // Assert
+        expect(result).toBe(`${month}th month of FY${year}`)
+      },
+    )
   })
 })
