@@ -48,7 +48,6 @@ CalendarUnitOfTime.prototype.getFirstCalendarDay = function() {
   }
 
   if (this instanceof CalendarMonth) {
-    console.info('in calendar month')
     const result = new CalendarDay(this.year, this.monthNumber, DayOfMonth.One)
     return result
   }
