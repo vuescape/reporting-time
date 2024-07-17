@@ -5,8 +5,7 @@ import { UnitOfTimeKind } from './UnitOfTimeKind'
 export abstract class UnitOfTime {
   /**
    * Determines whether two objects of type @see UnitOfTime  are equal.
-   * @param left The object to the left of the operator.
-   * @param right The object to the right of the operator.
+   * @param value The object value to compare this instance to.
    * @returns  true if the two units-of-time are equal; false otherwise.
    */
   public abstract equals(value: UnitOfTime): boolean
