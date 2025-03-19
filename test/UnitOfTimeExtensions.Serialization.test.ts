@@ -286,7 +286,7 @@ describe('UnitOfTimeExtensions.Serialization --', () => {
       const serializeToSortableString = () => unitOfTime.serializeToSortableString()
 
       // Assert
-      expect(serializeToSortableString).toThrow(/Cannot read property 'serializeToSortableString' of undefined/)
+      expect(serializeToSortableString).toThrow(/Cannot read properties of undefined/)
     })
     it('should throw an error when object is not a UnitOfTime', () => {
       // Arrange
