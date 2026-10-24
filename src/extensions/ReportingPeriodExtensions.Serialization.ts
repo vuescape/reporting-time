@@ -4,6 +4,7 @@ import { UnitOfTime } from '../UnitOfTime'
 import './UnitOfTimeExtensions.Serialization'
 
 declare module '../ReportingPeriod' {
+  // eslint-disable-next-line @typescript-eslint/no-shadow -- module augmentation merges into the imported class
   interface ReportingPeriod {
     /**
      * Serializes a @see ReportingPeriod to a string.
@@ -26,7 +27,6 @@ declare module '../ReportingPeriod' {
   }
 }
 
-// tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.serializeToString = function() {
   const result = `${this.start.serializeToSortableString()},${this.end.serializeToSortableString()}`
   return result
@@ -39,7 +39,7 @@ ReportingPeriod.deserializeFromString = (reportingPeriod: string): ReportingPeri
 
   const tokens = reportingPeriod.split(',')
   if (tokens.length !== 2 || tokens.find(_ => isNullOrWhiteSpace(_))) {
-    throw new Error(// tslint:disable-next-line: max-line-length
+    throw new Error(
       `Could not deserialize reportingPeriod string, '${reportingPeriod}'. It appears to be malformed: start and end are not provided.`)
   }
 

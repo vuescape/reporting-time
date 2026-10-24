@@ -52,5 +52,4 @@
 //   }
 // }
 
-// // tslint:disable-next-line: only-arrow-functions
 // // UnitOfTime.prototype.serializeToSortableString = function() {}

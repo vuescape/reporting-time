@@ -11,6 +11,7 @@ import { QuarterNumber } from '../QuarterNumber'
 import { UnitOfTime } from '../UnitOfTime'
 
 declare module '../UnitOfTime' {
+  // eslint-disable-next-line @typescript-eslint/no-shadow -- module augmentation merges into the imported class
   interface UnitOfTime {
     serializeToSortableString(): string
   }
@@ -60,14 +61,9 @@ function parseIntOrThrow(token: string, errorMessage: string) {
   }
 }
 
-const isValidEnumValue = <T>(e: T) => (token: any): token is T[keyof T] => Object.values(e)
-  .includes(token as T[keyof T])
-
+// The enum's range is validated by the unit-of-time constructors the parsed value is passed to
 function parseEnumOrThrow<T>(token: string, errorMessage: string): T {
   const intValue = parseIntOrThrow(token, errorMessage)
-  if (!isValidEnumValue(token)) {
-    throw new RangeError(errorMessage)
-  }
 
   return (intValue as unknown) as T
 }
@@ -84,7 +80,7 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
     throw new Error('Cannot deserialize string; it is not valid unit-of-time.')
   }
   if (serializationFormatMatches.length !== 1) {
-    throw new Error(// tslint:disable-next-line: max-line-length
+    throw new Error(
       `Invalid UnitOfTime format: could not uniquely identify the UnitOfTime format for UnitOfTime, '${unitOfTime}' so could not deserialize.`)
   }
   const serializationFormatMatch = serializationFormatMatches[0]
@@ -185,10 +181,9 @@ UnitOfTime.deserializeFromSortableString = <T extends UnitOfTime>(unitOfTime: st
   throw new RangeError(`this type of unit-of-time is not supported: ${serializedType}`)
 }
 
-// tslint:disable-next-line: only-arrow-functions
 UnitOfTime.prototype.serializeToSortableString = function() {
   if (this instanceof CalendarDay) {
-    const unitOfTimeAsCalendarDay = this as CalendarDay
+    const unitOfTimeAsCalendarDay = this
     const result                  = `c-${unitOfTimeAsCalendarDay.year
       .toString()
       .padStart(4, '0')}-${unitOfTimeAsCalendarDay.monthNumber
@@ -199,7 +194,7 @@ UnitOfTime.prototype.serializeToSortableString = function() {
   }
 
   if (this instanceof CalendarMonth) {
-    const unitOfTimeAsCalendarMonth = this as CalendarMonth
+    const unitOfTimeAsCalendarMonth = this
     const result                    = `c-${unitOfTimeAsCalendarMonth.year
       .toString()
       .padStart(4, '0')}-${unitOfTimeAsCalendarMonth.monthNumber.toString().padStart(2, '0')}`
@@ -207,7 +202,7 @@ UnitOfTime.prototype.serializeToSortableString = function() {
   }
 
   if (this instanceof CalendarQuarter) {
-    const unitOfTimeAsCalendarQuarter = this as CalendarQuarter
+    const unitOfTimeAsCalendarQuarter = this
 
     const result = `c-${unitOfTimeAsCalendarQuarter.year.toString()
       .padStart(4, '0')}-Q${unitOfTimeAsCalendarQuarter.quarterNumber}`
@@ -215,14 +210,14 @@ UnitOfTime.prototype.serializeToSortableString = function() {
   }
 
   if (this instanceof CalendarYear) {
-    const unitOfTimeAsCalendarYear = this as CalendarYear
+    const unitOfTimeAsCalendarYear = this
 
     const result = `c-${unitOfTimeAsCalendarYear.year.toString().padStart(4, '0')}`
     return result
   }
 
   if (this instanceof FiscalMonth) {
-    const unitOfTimeAsFiscalMonth = this as FiscalMonth
+    const unitOfTimeAsFiscalMonth = this
 
     const result = `f-${unitOfTimeAsFiscalMonth.year
       .toString()
@@ -231,7 +226,7 @@ UnitOfTime.prototype.serializeToSortableString = function() {
   }
 
   if (this instanceof FiscalQuarter) {
-    const unitOfTimeAsFiscalQuarter = this as FiscalQuarter
+    const unitOfTimeAsFiscalQuarter = this
 
     const result = `f-${unitOfTimeAsFiscalQuarter.year.toString()
       .padStart(4, '0')}-Q${unitOfTimeAsFiscalQuarter.quarterNumber}`
@@ -239,7 +234,7 @@ UnitOfTime.prototype.serializeToSortableString = function() {
   }
 
   if (this instanceof FiscalYear) {
-    const unitOfTimeAsCalendarYear = this as FiscalYear
+    const unitOfTimeAsCalendarYear = this
 
     const result = `f-${unitOfTimeAsCalendarYear.year.toString().padStart(4, '0')}`
     return result

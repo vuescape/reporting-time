@@ -332,7 +332,6 @@ describe('FiscalMonth --', () => {
       expect(result).toBe(`${month}rd month of FY${year}`)
     })
 
-    // tslint:disable-next-line: max-line-length
     it(
       'should return friendly string representation with correct month suffix when MonthNumber is greater than Three',
       () => {

@@ -22,7 +22,7 @@ describe('UnitOfTimeExtensions.Math --', () => {
   describe('plus --', () => {
     it('should throw Error when granularityOfUnitsToAdd is not an enum value', () => {
       // Arrange
-      const invalidUnitOfTimeGranularity = 99
+      const invalidUnitOfTimeGranularity = 99 as UnitOfTimeGranularity
       const calendarMonth                = new CalendarMonth(2020, MonthNumber.Nine)
 
       // Act
@@ -53,7 +53,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       // Assert
       expect(plus).toThrow('UnitOfTimeGranularity cannot be Invalid or Unbounded')
     })
-    // tslint:disable-next-line: max-line-length
     it(
       'should return same UnitOfTime when parameter UnitOfTimeGranularity is explicitly specified or uses UnitOfTime default ',
       () => {
@@ -287,7 +286,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       // Assert
       expect(actualUnitOfTime.equals(expectedUnitOfTime)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should add CalendarQuarter when unitOfTime is a CalendarQuarter and parameter unitsToAdd is positive', () => {
       // Arrange
       const systemUnderTest = new CalendarQuarter(2016, QuarterNumber.Q2)
@@ -321,7 +319,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       expect(actualUnitOfTime7.equals(expectedUnitOfTime7)).toBe(true)
       expect(actualUnitOfTime8.equals(expectedUnitOfTime8)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it(
       'should subtract CalendarQuarter when unitOfTime is a CalendarQuarter and parameter unitsToAdd is negative',
       () => {
@@ -368,7 +365,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       // Assert
       expect(actualUnitOfTime.equals(expectedUnitOfTime)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should add FiscalQuarter when unitOfTime is a FiscalQuarter and parameter unitsToAdd is positive', () => {
       // Arrange
       const systemUnderTest = new FiscalQuarter(2016, QuarterNumber.Q2)
@@ -444,7 +440,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       // Assert
       expect(actualUnitOfTime.equals(expectedUnitOfTime)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should add GenericQuarter when unitOfTime is a GenericQuarter and parameter unitsToAdd is positive', () => {
       // Arrange
       const systemUnderTest = new GenericQuarter(2016, QuarterNumber.Q2)
@@ -478,7 +473,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       expect(actualUnitOfTime7.equals(expectedUnitOfTime7)).toBe(true)
       expect(actualUnitOfTime8.equals(expectedUnitOfTime8)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it(
       'should subtract GenericQuarter when unitOfTime is a GenericQuarter and parameter unitsToAdd is negative',
       () => {
@@ -525,7 +519,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       // Assert
       expect(actualUnitOfTime.equals(expectedUnitOfTime)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should add CalendarYear when unitOfTime is a CalendarYear and parameter unitsToAdd is positive', () => {
       // Arrange
       const systemUnderTest = new CalendarYear(2016)
@@ -544,7 +537,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       expect(actualUnitOfTime2.equals(expectedUnitOfTime2)).toBe(true)
       expect(actualUnitOfTime3.equals(expectedUnitOfTime3)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should subtract CalendarYear when unitOfTime is a CalendarYear and parameter unitsToAdd is negative', () => {
       // Arrange
       const systemUnderTest = new CalendarYear(2016)
@@ -573,7 +565,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       // Assert
       expect(actualUnitOfTime.equals(expectedUnitOfTime)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should add FiscalYear when unitOfTime is a FiscalYear and parameter unitsToAdd is positive', () => {
       // Arrange
       const systemUnderTest = new FiscalYear(2016)
@@ -592,7 +583,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       expect(actualUnitOfTime2.equals(expectedUnitOfTime2)).toBe(true)
       expect(actualUnitOfTime3.equals(expectedUnitOfTime3)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should subtract FiscalYear when unitOfTime is a FiscalYear and parameter unitsToAdd is negative', () => {
       // Arrange
       const systemUnderTest = new FiscalYear(2016)
@@ -621,7 +611,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       // Assert
       expect(actualUnitOfTime.equals(expectedUnitOfTime)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should add GenericYear when unitOfTime is a GenericYear and parameter unitsToAdd is positive', () => {
       // Arrange
       const systemUnderTest = new GenericYear(2016)
@@ -640,7 +629,6 @@ describe('UnitOfTimeExtensions.Math --', () => {
       expect(actualUnitOfTime2.equals(expectedUnitOfTime2)).toBe(true)
       expect(actualUnitOfTime3.equals(expectedUnitOfTime3)).toBe(true)
     })
-    // tslint:disable-next-line: max-line-length
     it('should subtract GenericYear when unitOfTime is a GenericYear and parameter unitsToAdd is negative', () => {
       // Arrange
       const systemUnderTest = new GenericYear(2016)

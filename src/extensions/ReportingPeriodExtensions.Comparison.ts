@@ -45,7 +45,6 @@
 //      * true if the first reporting period is greater than and adjacent to the second reporting period; false,
 // otherwise. */ isGreaterThanAndAdjacentTo(reportingPeriod: ReportingPeriod): boolean } }
 
-// // tslint:disable-next-line: only-arrow-functions
 // ReportingPeriod.prototype.contains = function(unitOfTimeOrReportingPeriod: UnitOfTime | ReportingPeriod): boolean {
 //   if (!unitOfTimeOrReportingPeriod) {
 //     throw new Error('unitOfTimeOrReportingPeriod must not be undefined.')
@@ -96,7 +95,6 @@
 //   return result
 // }
 
-// // tslint:disable-next-line: only-arrow-functions
 // ReportingPeriod.prototype.hasOverlapWith = function(reportingPeriod: ReportingPeriod): boolean {
 //   if (!reportingPeriod) {
 //     throw new Error('reportingPeriod must not be undefined.')
@@ -118,7 +116,6 @@
 //   return result
 // }
 
-// // tslint:disable-next-line: only-arrow-functions
 // ReportingPeriod.prototype.isGreaterThanAndAdjacentTo = function(reportingPeriod: ReportingPeriod): boolean {
 //   if (!reportingPeriod) {
 //     throw new Error('reportingPeriod must not be undefined.')

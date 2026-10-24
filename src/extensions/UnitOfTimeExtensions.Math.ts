@@ -21,8 +21,7 @@ declare module '../UnitOfTime' {
 
 import './UnitOfTimeExtensions.Serialization'
 
-// tslint:disable-next-line: only-arrow-functions
-UnitOfTime.prototype.plus = function(unitsToAdd: number, granularityOfUnitsToAdd: UnitOfTimeGranularity) {
+UnitOfTime.prototype.plus = function(unitsToAdd: number, granularityOfUnitsToAdd?: UnitOfTimeGranularity) {
   if (granularityOfUnitsToAdd === undefined) {
     return plusInternal(this, unitsToAdd)
   }
@@ -39,7 +38,7 @@ const plusInternalWithGranularity = <T extends UnitOfTime>(unitOfTime: T,
   }
 
   if (UnitOfTimeGranularityExtensions.isMoreGranularThan(granularityOfUnitsToAdd, unitOfTime.unitOfTimeGranularity)) {
-    throw new Error(// tslint:disable-next-line: max-line-length
+    throw new Error(
       'granularityOfUnitsToAdd is more granular than unitOfTime.  Only units that are as granular or less granular than a unit-of-time can be added to that unit-of-time.')
   }
 

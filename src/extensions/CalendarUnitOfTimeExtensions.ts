@@ -7,6 +7,7 @@ import { DayOfMonth } from '../DayOfMonth'
 import { MonthOfYear } from '../MonthOfYear'
 
 declare module '../CalendarUnitOfTime' {
+  // eslint-disable-next-line @typescript-eslint/no-shadow -- module augmentation merges into the imported class
   interface CalendarUnitOfTime {
     /**
      * Gets the first  @see CalendarDay of a @see CalendarUnitOfTime.
@@ -40,7 +41,6 @@ declare module '../CalendarUnitOfTime' {
   }
 }
 
-// tslint:disable-next-line: only-arrow-functions
 CalendarUnitOfTime.prototype.getFirstCalendarDay = function() {
   if (this instanceof CalendarDay) {
     const result = this

@@ -197,7 +197,7 @@ describe('CalendarDay --', () => {
       const calendarDay2 = new CalendarDay(2020, MonthNumber.Three, DayOfMonth.TwentyThree)
 
       // Act
-      const result = calendarDay1 < calendarDay1
+      const result = calendarDay1 < calendarDay2
 
       // Assert
       expect(result).toBe(false)
@@ -395,7 +395,6 @@ describe('CalendarDay --', () => {
       expect(result).toBe(`0${year}-0${month}-0${day}`)
     })
 
-    // tslint:disable-next-line: max-line-length
     it(
       'should return friendly string representation with correct 2 characters in month when MonthNumber is less than 10',
       () => {
@@ -412,7 +411,6 @@ describe('CalendarDay --', () => {
       },
     )
 
-    // tslint:disable-next-line: max-line-length
     it(
       'should return friendly string representation with correct 2 characters in day when DayOfMonth is less than 10',
       () => {

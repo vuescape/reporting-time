@@ -77,7 +77,7 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
     it('should throw Error when granularityOfUnitsToAdd is invalid', () => {
       // Arrange
       const component               = ReportingPeriodComponent.Both
-      const granularityOfUnitsToAdd = 22
+      const granularityOfUnitsToAdd = 22 as UnitOfTimeGranularity
       const reportingPeriod         = new ReportingPeriod(new FiscalYear(2011), new FiscalYear(2012))
 
       // Act
@@ -245,7 +245,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         expect(actualReportingPeriod.equals(test.expectedReportingPeriod)).toBe(true)
       }
     })
-    // tslint:disable-next-line: max-line-length
     it(
       'should throw Error when adjusting Start and adjusting reportingPeriod causes Start to be greater than End',
       () => {
@@ -280,7 +279,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         }
       },
     )
-    // tslint:disable-next-line: max-line-length
     it('should throw Error when adjusting End and adjusting reportingPeriod causes End to be less than Start', () => {
       // Arrange
       const tests = [{
@@ -730,7 +728,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
       expect(createPermutationsInvalid).toThrow(/granularity must not be Invalid or Unbounded/)
       expect(createPermutationsUnbounded).toThrow(/granularity must not be Invalid or Unbounded/)
     })
-    // tslint:disable-next-line: max-line-length
     it(
       'should return reportingPeriod split into CalendarYear when reportingPeriod is in CalendarYear and granularity is Year',
       () => {
@@ -755,7 +752,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         results.forEach(_ => expect(_.actual).toEqual(_.expected))
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should return reportingPeriod split into CalendarQuarter when reportingPeriod is in CalendarYear and granularity is Quarter',
       () => {
@@ -792,7 +788,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         results.forEach(_ => expect(_.actual).toEqual(_.expected))
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should return reportingPeriod split into CalendarMonth when reportingPeriod is in CalendarYear and granularity is Month',
       () => {
@@ -855,7 +850,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         results.forEach(_ => expect(_.actual).toEqual(_.expected))
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should throw Error when reportingPeriods is in CalendarQuarter and granularity is Year and there is overflow',
       () => {
@@ -883,7 +877,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         })
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should return reportingPeriod split into CalendarYear when reportingPeriod is in CalendarQuarter and granularity is Year',
       () => {
@@ -912,7 +905,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         results.forEach(_ => expect(_.actual).toEqual(_.expected))
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should return reportingPeriod split into CalendarQuarter when reportingPeriod is in CalendarQuarter and granularity is Quarter',
       () => {
@@ -947,7 +939,6 @@ describe('ReportingPeriodExtensions.Manipulation --', () => {
         results.forEach(_ => expect(_.actual).toEqual(_.expected))
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should return reportingPeriod split into CalendarMonth when reportingPeriod is in CalendarQuarter and granularity is Month',
       () => {

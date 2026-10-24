@@ -140,7 +140,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         expect(reportingPeriod).toThrow()
       }
     })
-    // tslint:disable-next-line: max-line-length
     it(
       'should throw an Error when the serialized reportingPeriod has a malformed token representing the start of reportingPeriod',
       () => {
@@ -154,7 +153,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         }
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should throw an Error when the serialized reportingPeriod has a malformed token representing the end  of reportingPeriod',
       () => {
@@ -168,7 +166,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         }
       },
     )
-    // tslint:disable-next-line: max-line-length
     it('should throw an Error when the serialized reportingPeriod has the start greater than the end', () => {
       // Arrange
       const reportingPeriodStrings = ['c-2017-04,c-2016-04', 'c-2017-Q3,c-2017-Q2', 'f-2017,f-2016']
@@ -179,7 +176,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         expect(reportingPeriod).toThrow(/start is greater than end/)
       }
     })
-    // tslint:disable-next-line: max-line-length
     it(
       'should be deserialized correctly when reportingPeriod is a well formed ReportingPeriod of CalendarMonth string',
       () => {
@@ -197,7 +193,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         expect(reportingPeriod.equals(expected)).toBe(true)
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should be deserialized correctly when reportingPeriod is a well formed ReportingPeriod of CalendarQuarter string',
       () => {
@@ -215,7 +210,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         expect(reportingPeriod.equals(expected)).toBe(true)
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should be deserialized correctly when reportingPeriod is a well formed ReportingPeriod of CalendarYear string',
       () => {
@@ -232,7 +226,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
       },
     )
 
-    // tslint:disable-next-line: max-line-length
     it(
       'should be deserialized correctly when reportingPeriod is a well formed ReportingPeriod of FiscalMonth string',
       () => {
@@ -250,7 +243,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         expect(reportingPeriod.equals(expected)).toBe(true)
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should be deserialized correctly when reportingPeriod is a well formed ReportingPeriod of FiscalQuarter string',
       () => {
@@ -268,7 +260,6 @@ describe('ReportingPeriodExtensions.Serialization --', () => {
         expect(reportingPeriod.equals(expected)).toBe(true)
       },
     )
-    // tslint:disable-next-line: max-line-length
     it(
       'should be deserialized correctly when reportingPeriod is a well formed ReportingPeriod of FiscalYear string',
       () => {

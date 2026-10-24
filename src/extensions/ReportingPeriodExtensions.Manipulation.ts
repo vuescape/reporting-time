@@ -26,7 +26,6 @@ import './UnitOfTimeExtensions.Math'
 
 declare module '../ReportingPeriod' {
   interface ReportingPeriod {
-    // tslint:disable: max-line-length
     /**
      * Clones a reporting period while adjusting the start or end of the reporting period, or both.
      * @param component The component(s) of the reporting period to adjust.
@@ -92,11 +91,9 @@ declare module '../ReportingPeriod' {
      */
     // toLeastGranular(): ReportingPeriod
 
-    // tslint:enable: max-line-length
   }
 }
 
-// tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.cloneWithAdjustment = function(component: ReportingPeriodComponent,
   unitsToAdd: number,
   granularityOfUnitsToAdd: UnitOfTimeGranularity,
@@ -129,7 +126,6 @@ ReportingPeriod.prototype.cloneWithAdjustment = function(component: ReportingPer
   return result
 }
 
-// tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.createPermutations = function(maxUnitsInAnyReportingPeriod: number): Array<ReportingPeriod> {
   if (!maxUnitsInAnyReportingPeriod || !(maxUnitsInAnyReportingPeriod > 0)) {
     throw new RangeError(`maxUnitsInAnyReportingPeriod, '${maxUnitsInAnyReportingPeriod}', must be greater than 0.`)
@@ -152,7 +148,6 @@ ReportingPeriod.prototype.createPermutations = function(maxUnitsInAnyReportingPe
   return result
 }
 
-// tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.split = function(granularity: UnitOfTimeGranularity): Array<UnitOfTime> {
   if (!Object.values(UnitOfTimeGranularity).includes(granularity)) {
     throw new RangeError(`component, '${granularity}', must be a valid UnitOfTimeGranularity.`)
@@ -205,7 +200,7 @@ const makeMoreGranularUnitOfTime = (unitOfTime: UnitOfTime, granularity: UnitOfT
   }
 
   if (UnitOfTimeGranularityExtensions.isAsGranularOrMoreGranularThan(unitOfTime.unitOfTimeGranularity, granularity)) {
-    throw new Error(// tslint:disable-next-line: max-line-length
+    throw new Error(
       `unitOfTime, '${unitOfTime.unitOfTimeGranularity}', is as granular or more granular than granularity, '${granularity}`)
   }
 
@@ -300,7 +295,6 @@ const makeLessGranular = (reportingPeriod: ReportingPeriod, granularity: UnitOfT
 
   const reportingPeriodGranularity = reportingPeriod.getUnitOfTimeGranularity()
   if (UnitOfTimeGranularityExtensions.isAsGranularOrLessGranularThan(reportingPeriodGranularity, granularity)) {
-    // tslint:disable-next-line: max-line-length
     throw new Error(`reportingPeriod, '${reportingPeriod}', is as granular or less granular than granularity, '${granularity}'.`)
   }
 
@@ -318,12 +312,12 @@ const makeLessGranular = (reportingPeriod: ReportingPeriod, granularity: UnitOfT
     const quarterByEndMonth = new Map([[3, QuarterNumber.Q1], [6, QuarterNumber.Q2], [9, QuarterNumber.Q3], [12, QuarterNumber.Q4]])
 
     if (!quarterByStartMonth.has(startAsMonth.monthNumber)) {
-      throw new Error(// tslint:disable-next-line: max-line-length
+      throw new Error(
         'Cannot convert a monthly reporting period to a quarterly reporting period when the reporting period start time is not the first month of a recognized quarter.')
     }
 
     if (!quarterByEndMonth.has(endAsMonth.monthNumber)) {
-      throw new Error(// tslint:disable-next-line: max-line-length
+      throw new Error(
         'Cannot convert a monthly reporting period to a quarterly reporting period when the reporting period end time is not the last month of a recognized quarter.')
     }
 
@@ -360,12 +354,12 @@ const makeLessGranular = (reportingPeriod: ReportingPeriod, granularity: UnitOfT
     const endAsQuarter   = (reportingPeriod.end as unknown) as IHaveAQuarter
 
     if (startAsQuarter.quarterNumber !== QuarterNumber.Q1) {
-      throw new Error(// tslint:disable-next-line: max-line-length
+      throw new Error(
         'Cannot convert a quarterly reporting period to a yearly reporting period when the reporting period start time is not Q1.')
     }
 
     if (endAsQuarter.quarterNumber !== QuarterNumber.Q4) {
-      throw new Error(// tslint:disable-next-line: max-line-length
+      throw new Error(
         'Cannot convert a quarterly reporting period to a yearly reporting period when the reporting period end is not Q4.')
     }
 

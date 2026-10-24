@@ -36,7 +36,6 @@ declare module '../ReportingPeriod' {
   }
 }
 
-// tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.getUnitOfTimeGranularity = function() {
   if (this.start.unitOfTimeGranularity !== this.end.unitOfTimeGranularity) {
     throw new Error('ReportingPeriod start and end has different granularity')
@@ -46,7 +45,6 @@ ReportingPeriod.prototype.getUnitOfTimeGranularity = function() {
   return result
 }
 
-// tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.getUnitOfTimeKind = function() {
   if (this.start.unitOfTimeKind !== this.end.unitOfTimeKind) {
     throw new Error('ReportingPeriod start and end has different unitOfTimeKind')
@@ -56,7 +54,6 @@ ReportingPeriod.prototype.getUnitOfTimeKind = function() {
   return result
 }
 
-// tslint:disable-next-line: only-arrow-functions
 ReportingPeriod.prototype.getUnitsWithin = function() {
   const allUnits: Array<UnitOfTime> = []
   let currentUnit                   = this.start
