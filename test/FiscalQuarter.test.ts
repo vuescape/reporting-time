@@ -1,4 +1,4 @@
-import expect from 'expect'
+import { expect } from 'expect'
 
 import { CalendarYear } from '../src/CalendarYear'
 import { FiscalQuarter } from '../src/FiscalQuarter'
